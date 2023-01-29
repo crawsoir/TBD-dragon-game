@@ -5,8 +5,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_Try_Again_pressed():
-	#todo
-	pass
+	Global.continue_game()
 
 func _on_Save_and_Exit_pressed():
 	#todo: save

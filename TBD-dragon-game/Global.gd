@@ -7,8 +7,6 @@ var GAME_OVER_SCREEN = "res://gui/GameOverScreen.tscn"
 var OPTIONS_SCREEN = "res://gui/OptionsScreen.tscn"
 var PAUSE_SCREEN = "res://gui/PauseScreen.tscn"
 
-#var options_return = TITLE_SCREEN
-
 var current_scene = null
 
 # Variables for Saving and Loading
@@ -43,12 +41,6 @@ func goto_scene(path: String):
 func _deferred_goto_scene(path):
 	# It is now safe to remove the current scene
 	current_scene.queue_free()
-
-	# which scene options menu should return to
-	#if path == TITLE_SCREEN:
-	#	options_return = TITLE_SCREEN
-	#elif path == PAUSE_SCREEN:
-	#	options_return = PAUSE_SCREEN
 
 	# Load the new scene.
 	var s = ResourceLoader.load(path)
