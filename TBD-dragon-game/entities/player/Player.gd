@@ -63,7 +63,8 @@ func take_damage(damage:int):
 	if hit_points <= 0:
 		print("Died!")
 		alive = false
-		emit_signal("death_triggered")
+		# emit_signal("death_triggered") TODO keep as below or fix later
+		Global.goto_scene(Global.GAME_OVER_SCREEN)
 		
 func heal(points:int):
 	print("Healed!")
@@ -74,7 +75,7 @@ func _on_Area2D_body_entered(body):
 		take_damage(body.get("allergy_damage"))
 
 # Copied from https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html
-func save_game(): 
+func save(): 
 	var save_dict = {
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),

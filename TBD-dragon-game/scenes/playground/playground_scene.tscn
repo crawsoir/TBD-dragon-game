@@ -13,6 +13,7 @@ script = ExtResource( 4 )
 position = Vector2( -96, -32 )
 
 [node name="sky" type="Sprite" parent="Player"]
+visible = false
 position = Vector2( -32, 40 )
 scale = Vector2( 3.55224, 4.03738 )
 z_index = -1

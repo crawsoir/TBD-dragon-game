@@ -14,7 +14,7 @@ func _on_Start_pressed():
 	Global.goto_scene(Global.GAME_SCREEN)
 
 func _on_Continue_pressed():
-	Global.goto_scene(Global.GAME_SCREEN)
+	Global.continue_game()
 
 func _on_Options_pressed():
 	Global.goto_scene(Global.OPTIONS_SCREEN)

@@ -20,6 +20,7 @@ func _ready():
 	current_scene = root.get_child(root.get_child_count() - 1)
 	
 func goto_scene(path: String):
+	print(path)
 	# This function will usually be called from a signal callback,
 	# or some other function in the current scene.
 	# Deleting the current scene at this point is
@@ -60,7 +61,13 @@ func _deferred_goto_scene(path):
 
 	# Optionally, to make it compatible with the SceneTree.change_scene() API.
 	get_tree().set_current_scene(current_scene)
-	
+
+func continue_game():
+	call_deferred("_continue_game_helper")
+
+func _continue_game_helper():
+	_deferred_goto_scene(GAME_SCREEN)
+	load_game()
 	
 # Assumes no persist node is under another persist node
 # Call when instantiating a world I guess.
@@ -84,10 +91,8 @@ func load_game():
 	while save_game.get_position() < save_game.get_len():
 		# Get the saved dictionary from the next line in the save file
 		var node_data = parse_json(save_game.get_line())
-
-		# Firstly, we need to create the object and add it to the tree and set its position.
+		# 
 		var new_object = load(node_data["filename"]).instance()
-		get_node(node_data["parent"]).add_child(new_object)
 		new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
 
 		# Now we set the remaining variables.
@@ -95,7 +100,7 @@ func load_game():
 			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 				continue
 			new_object.set(i, node_data[i])
-
+		get_node(node_data["parent"]).add_child(new_object)
 	save_game.close()
 	print("Loaded!")
 	
