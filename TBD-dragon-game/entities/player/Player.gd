@@ -72,3 +72,15 @@ func heal(points:int):
 func _on_Area2D_body_entered(body):
 	if not body.get("allergy_damage") == null:
 		take_damage(body.get("allergy_damage"))
+
+# Copied from https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html
+func save_game(): 
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+		"hit_points" : hit_points,
+		"max_hp" : max_hp
+	}
+	return save_dict
