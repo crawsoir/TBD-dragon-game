@@ -9,4 +9,5 @@ func _on_Options_pressed():
 
 func _on_Save_and_Exit_pressed():
 	#todo: save
+	Global.save_game()
 	Global.goto_scene(Global.TITLE_SCREEN)
