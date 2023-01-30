@@ -63,7 +63,8 @@ func take_damage(damage:int):
 	if hit_points <= 0:
 		print("Died!")
 		alive = false
-		emit_signal("death_triggered")
+		# emit_signal("death_triggered") TODO keep as below or fix later
+		Global.goto_scene(Global.GAME_OVER_SCREEN)
 		
 func heal(points:int):
 	print("Healed!")
@@ -72,3 +73,15 @@ func heal(points:int):
 func _on_Area2D_body_entered(body):
 	if not body.get("allergy_damage") == null:
 		take_damage(body.get("allergy_damage"))
+
+# Copied from https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html
+func save(): 
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+		"hit_points" : hit_points,
+		"max_hp" : max_hp
+	}
+	return save_dict
