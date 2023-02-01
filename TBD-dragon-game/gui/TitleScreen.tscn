@@ -97,7 +97,7 @@ custom_fonts/font = SubResource( 2 )
 custom_styles/hover = SubResource( 10 )
 custom_styles/pressed = SubResource( 19 )
 custom_styles/normal = SubResource( 3 )
-text = "    Start Game"
+text = "    Start New Game"
 align = 0
 
 [node name="Continue" type="Button" parent="StartMenuButtons"]
