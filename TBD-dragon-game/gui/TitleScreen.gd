@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 onready var continue_button = $StartMenuButtons/Continue
+var save_exists
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,11 +13,15 @@ func _ready():
 	#$Title.show()
 	
 	# if save does not exist, disable the continue button
-	if not Global.check_save_exists():
+	save_exists = Global.check_save_exists()
+	if not save_exists:
 		continue_button.disabled = true
 
 func _on_Start_pressed():
-	Global.goto_overlay(Global.CONFIRMATION_BOX)
+	if save_exists:
+		Global.goto_overlay(Global.CONFIRMATION_BOX)
+	else:
+		Global.goto_scene(Global.GAME_SCREEN)
 
 func _on_Continue_pressed():
 	Global.continue_game()
