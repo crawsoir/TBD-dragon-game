@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://fonts/DTNouveau-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui/OptionsScreen.gd" type="Script" id=2]
@@ -15,6 +15,12 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=4]
 size = 26
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.254902, 0.254902, 0.254902, 0.588235 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.254902, 0.254902, 0.254902, 0.588235 )
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
@@ -72,7 +78,12 @@ margin_left = 29.0
 margin_top = 20.0
 margin_right = 163.0
 margin_bottom = 55.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 4 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 5 )
 text = "RETURN"
 

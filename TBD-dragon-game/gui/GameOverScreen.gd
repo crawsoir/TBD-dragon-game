@@ -8,5 +8,4 @@ func _on_Try_Again_pressed():
 	Global.continue_game()
 
 func _on_Save_and_Exit_pressed():
-	#todo: save
 	Global.goto_scene(Global.TITLE_SCREEN)

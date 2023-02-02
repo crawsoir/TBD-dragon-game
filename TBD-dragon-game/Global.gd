@@ -1,11 +1,12 @@
 extends Node
 
 # Variables for managing scenes
-var TITLE_SCREEN = "res://gui/TitleScreen.tscn"
-var GAME_SCREEN = "res://scenes/playground/playground_scene.tscn"
+var CONFIRMATION_BOX = "res://gui/ConfirmationBox.tscn"
 var GAME_OVER_SCREEN = "res://gui/GameOverScreen.tscn"
+var GAME_SCREEN = "res://scenes/playground/playground_scene.tscn"
 var OPTIONS_SCREEN = "res://gui/OptionsScreen.tscn"
 var PAUSE_SCREEN = "res://gui/PauseScreen.tscn"
+var TITLE_SCREEN = "res://gui/TitleScreen.tscn"
 
 var current_scene = null
 
@@ -60,6 +61,15 @@ func continue_game():
 func _continue_game_helper():
 	_deferred_goto_scene(GAME_SCREEN)
 	load_game()
+	
+	
+func goto_overlay(path):
+	# This function is similar to goto_scene, except the scene does not replace the current scene 
+	var s = ResourceLoader.load(path)
+
+	# Add it to the active scene, as child of root.
+	get_tree().get_root().add_child(s.instance())
+	
 	
 # Assumes no persist node is under another persist node
 # Call when instantiating a world I guess.
@@ -121,3 +131,7 @@ func save_game():
 		save_game.store_line(to_json(node_data))
 	save_game.close()
 	print("Saved!")
+	
+func check_save_exists():
+	var save_game = File.new()
+	return save_game.file_exists("user://savegame.save")
