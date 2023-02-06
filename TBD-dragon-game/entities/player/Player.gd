@@ -21,7 +21,7 @@ func _physics_process(delta):
 	# gravity
 	if velocity.y < MAX_FALL_SPEED:
 		velocity.y += GRAVITY * delta
-	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide_with_snap(velocity, Vector2.UP)
 	
 	play_animation() # Selects animation being played based on the state of the player
 		

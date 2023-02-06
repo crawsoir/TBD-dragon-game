@@ -47,11 +47,18 @@ tracks/0/keys = {
 
 [node name="Dialogue Box" type="ColorRect" parent="."]
 pause_mode = 2
-margin_left = 161.0
-margin_top = 435.0
-margin_right = 867.0
-margin_bottom = 572.0
+anchor_left = 0.52
+anchor_top = 1.0
+anchor_right = 0.52
+anchor_bottom = 1.0
+margin_left = -371.48
+margin_top = -165.0
+margin_right = 334.52
+margin_bottom = -28.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 dialoguePath = "res://gui/DummyDialogue.json"
 imgPath = "res://gui/"
 

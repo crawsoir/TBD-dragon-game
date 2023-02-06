@@ -10,7 +10,7 @@ var can_interact = false
 var velocity = Vector2.ZERO
 
 # basic wandering variables
-var wander_timer = 700
+var wander_timer = 300
 var stop_timer = 0
 var wander_velocity = 15
 
@@ -20,7 +20,7 @@ func _process(delta):
 	
 	if has_gravity and velocity.y < 2000:
 		velocity.y += 1400 * delta
-	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide(velocity, Vector2.UP, true)
 	
 	play_animation()
 	
@@ -28,12 +28,12 @@ func basic_npc_wander():
 	if wander_timer > 0:
 		velocity.x = wander_velocity
 		wander_timer -= 1
-		stop_timer = 500
+		stop_timer = 400
 	elif stop_timer > 0:
 		velocity.x = 0
 		stop_timer -= 1
 	else:
-		wander_timer = 700
+		wander_timer = 300
 		wander_velocity = -wander_velocity
 
 func play_animation():
