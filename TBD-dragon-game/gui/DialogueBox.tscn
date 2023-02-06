@@ -43,9 +43,10 @@ tracks/0/keys = {
 "values": [ Vector2( -204, 418 ), Vector2( -204, 422 ) ]
 }
 
-[node name="Dialogue" type="Node2D"]
+[node name="Dialogue" type="CanvasLayer"]
 
 [node name="Dialogue Box" type="ColorRect" parent="."]
+pause_mode = 2
 margin_left = 161.0
 margin_top = 435.0
 margin_right = 867.0

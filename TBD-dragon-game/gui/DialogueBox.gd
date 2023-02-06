@@ -16,11 +16,13 @@ func _ready():
 	nextPhrase()
 	
 func _process(delta):
+	get_tree().paused = true
+	
 	$Indicator.visible = finished
 	if Input.is_action_just_pressed("ui_accept"):
 		if finished:
 			nextPhrase()
-		else:
+		else:    
 			$Text.visible_characters = len($Text.text)
 	
 func getDialogue() -> Array:
@@ -39,6 +41,7 @@ func getDialogue() -> Array:
 		
 func nextPhrase() -> void:
 	if phraseNum >= len(dialogue):
+		get_tree().paused = false
 		queue_free()
 		return
 	

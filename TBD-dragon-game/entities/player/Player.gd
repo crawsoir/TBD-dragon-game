@@ -41,6 +41,8 @@ func get_input():
 			velocity.y = JUMP_SPEED
 	if Input.is_action_pressed("ui_cancel"):
 		Global.goto_scene(Global.PAUSE_SCREEN)
+	if Input.is_action_pressed("ui_accept"):
+		pass
 			
 func play_animation():	
 	# flip sprite horizontally
