@@ -11,6 +11,8 @@ var max_hp = 5
 var hit_points = 5
 
 var alive = true # Needs to stay a bool
+var snap_vector = Vector2.DOWN * 16
+var jumping = false
 
 signal death_triggered
 
@@ -18,10 +20,18 @@ signal death_triggered
 func _physics_process(delta):
 	get_input()
 	
+	if jumping and velocity.y > 0:
+		jumping = false
+	
+	if jumping:
+		snap_vector = Vector2()
+	else:
+		snap_vector = Vector2.DOWN * 16
+	
 	# gravity
 	if velocity.y < MAX_FALL_SPEED:
 		velocity.y += GRAVITY * delta
-	velocity = move_and_slide_with_snap(velocity, Vector2.UP)
+	velocity = move_and_slide_with_snap(velocity, snap_vector, Vector2.UP, true)
 	
 	play_animation() # Selects animation being played based on the state of the player
 		
@@ -39,6 +49,7 @@ func get_input():
 	if Input.is_action_just_pressed("ui_up"):
 		if is_on_floor():
 			velocity.y = JUMP_SPEED
+			jumping = true
 	if Input.is_action_pressed("ui_cancel"):
 		Global.goto_scene(Global.PAUSE_SCREEN)
 	if Input.is_action_pressed("ui_accept"):
