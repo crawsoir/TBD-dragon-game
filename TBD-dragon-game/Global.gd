@@ -7,6 +7,13 @@ var GAME_SCREEN = "res://scenes/playground/playground_scene.tscn"
 var OPTIONS_SCREEN = "res://gui/OptionsScreen.tscn"
 var PAUSE_SCREEN = "res://gui/PauseScreen.tscn"
 var TITLE_SCREEN = "res://gui/TitleScreen.tscn"
+var PLAYER = "res://entities/player/Player.tscn"
+
+var AREAS = {
+	"FOREST_DEMO_ONE": "res://scenes/forest/demo-transition-areas/demo-area-1/forest_demo_transition_p1.tscn",
+	"FOREST_DEMO_TWO": "res://scenes/forest/demo-transition-areas/demo-area-2/forest_demo_transition_p2.tscn",
+	"FOREST_DEMO_THREE": "res://scenes/forest/demo-transition-areas/demo-area-3/forest_demo_transition_p3.tscn"
+}
 
 var current_scene = null
 
@@ -70,6 +77,46 @@ func goto_overlay(path):
 	# Add it to the active scene, as child of root.
 	get_tree().get_root().add_child(s.instance())
 	
+# For the player moving between different areas.
+func move_to_area(area_path: String, target_spawn: String):
+	call_deferred("_move_to_area", area_path, target_spawn) # do things safely
+
+func _move_to_area(area_path: String, target_spawn: String):
+	# Assumes a player has hit a spot where they need to transition scenes
+	# Save necessary data about the player, then spawn the player with that information
+	# in the target spawn area of the area the player is moving to.
+	
+	# This should always make us end up in a different scene UNLESS
+	# We spawn the same type of scene for a looping mechanic for some reason.
+	area_path = Global.AREAS[area_path]
+	# SAVE PLAYER INSTANCE CARRYOVER DATA HERE
+	if current_scene.get_node_or_null("Player") != null:
+		print("We'll implement this later")
+		# Store variables etc
+		
+	# Rest of this function is like deferred goto scene
+	# Free scene
+	current_scene.queue_free()
+	# Load the scene of the next_area
+	var next_area = ResourceLoader.load(area_path)
+	current_scene = next_area.instance()
+	# Might want to use constant variables for hardcoded node paths
+	# Set player Spawn point
+	var player_spawn_position = current_scene.get_node(target_spawn).position
+	var player = ResourceLoader.load(PLAYER).instance()
+	player.position = player_spawn_position
+	
+	# Set player camera limits based on area limits
+	player.get_node("Camera2D").limit_left = current_scene.camera_left_limit
+	player.get_node("Camera2D").limit_right = current_scene.camera_right_limit
+	
+	current_scene.add_child(player)
+
+	# Add it to the active scene, as child of root.
+	get_tree().get_root().add_child(current_scene)
+
+	# Optionally, to make it compatible with the SceneTree.change_scene() API.
+	get_tree().set_current_scene(current_scene)
 	
 # Assumes no persist node is under another persist node
 # Call when instantiating a world I guess.
