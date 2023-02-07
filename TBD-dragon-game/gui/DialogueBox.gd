@@ -2,6 +2,7 @@ extends ColorRect
 
 export var dialoguePath = ""
 export var imgPath = ""
+export var audioPath = ""
 export(float) var textSpeed = 0.05
 
 var dialogue
@@ -53,15 +54,32 @@ func nextPhrase() -> void:
 	$Text.visible_characters = 0
 	
 	var f = File.new()
+	
+	#TODO: relocate where images and audio are stored 
+	# loading portrait image
 	var img = imgPath + dialogue[phraseNum]["Name"] + dialogue[phraseNum]["Emotion"] + ".png"
 	if f.file_exists(img):
 		$Portrait.texture = load(img)
 	else:
 		$Portrait.texture = null
 		print("not found " + img)
+	
+	#TODO: localize sound effects in json, like with images
+	# loading dialogue sound effect
+	var sound = audioPath # + dialogue[phraseNum]["Name"] + dialogue[phraseNum]["Sound"] + ".wav"
+	if f.file_exists(audioPath):
+		$AudioStreamPlayer.stream = load(audioPath)
+	else:
+		$AudioStreamPlayer.stream = null
+		print("not found " + sound)
 		
 	while $Text.visible_characters < len($Text.text):
 		$Text.visible_characters += 1
+		
+		# play audio
+		if not $AudioStreamPlayer.stream == null:
+			$AudioStreamPlayer.playing = true
+			$AudioStreamPlayer.volume_db = rand_range(-20,-15)
 		
 		$Timer.start()
 		yield($Timer, "timeout")

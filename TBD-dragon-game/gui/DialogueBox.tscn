@@ -56,11 +56,12 @@ margin_top = -165.0
 margin_right = 334.52
 margin_bottom = -28.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 dialoguePath = "res://gui/DummyDialogue.json"
 imgPath = "res://gui/"
+audioPath = "res://entities/player/dialog_audio.wav"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dialogue Box"]
+volume_db = -10.0
 
 [node name="Portrait" type="Sprite" parent="Dialogue Box"]
 position = Vector2( 171, -167 )
