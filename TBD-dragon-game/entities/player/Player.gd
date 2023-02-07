@@ -88,6 +88,7 @@ func _on_Area2D_body_entered(body):
 		take_damage(body.get("allergy_damage"))
 
 # Copied from https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html
+
 func save(): 
 	var save_dict = {
 		"filename" : get_filename(),
@@ -96,5 +97,11 @@ func save():
 		"pos_y" : position.y,
 		"hit_points" : hit_points,
 		"max_hp" : max_hp
+	}
+	return save_dict
+
+func get_state():
+	var save_dict = {
+		"hit_points" : hit_points,
 	}
 	return save_dict

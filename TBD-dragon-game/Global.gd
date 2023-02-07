@@ -8,9 +8,16 @@ var GAME_SCREEN = "res://scenes/playground/playground_scene.tscn"
 var OPTIONS_SCREEN = "res://gui/OptionsScreen.tscn"
 var PAUSE_SCREEN = "res://gui/PauseScreen.tscn"
 var TITLE_SCREEN = "res://gui/TitleScreen.tscn"
+var PLAYER = "res://entities/player/Player.tscn"
+
+var AREAS = {
+	"FOREST_DEMO_ONE": "res://scenes/forest/demo-transition-areas/demo-area-1/forest_demo_transition_p1.tscn",
+	"FOREST_DEMO_TWO": "res://scenes/forest/demo-transition-areas/demo-area-2/forest_demo_transition_p2.tscn",
+	"FOREST_DEMO_THREE": "res://scenes/forest/demo-transition-areas/demo-area-3/forest_demo_transition_p3.tscn"
+}
 
 var current_scene = null
-
+var current_area_name = null
 # Variables for Saving and Loading
 # TODO
 
@@ -71,6 +78,81 @@ func goto_overlay(path):
 	# Add it to the active scene, as child of root.
 	get_tree().get_root().add_child(s.instance())
 	
+
+func get_player_data(player):
+	# Needs to only be called on the Player object
+	var return_dict = {
+		"Player": player.get_state(),
+		"Location": {
+			"Area" : current_area_name,
+			"x": player.position.x,
+			"y": player.position.y
+		}
+	}
+	return return_dict
+
+# For the player moving between different areas.
+func move_to_area(area_path: String, target_spawn: String):
+	print("Here!")
+	call_deferred("_move_to_area", area_path, target_spawn) # do things safely
+
+func _move_to_area(area_path: String, target_spawn: String):
+	# Assumes a player has hit a spot where they need to transition scenes
+	# Save necessary data about the player, then spawn the player with that information
+	# in the target spawn area of the area the player is moving to.
+	
+	# This should always make us end up in a different scene UNLESS
+	# We spawn the same type of scene for a looping mechanic for some reason.
+	
+	# SAVE PLAYER INSTANCE CARRYOVER DATA HERE
+	var player_data = {} # No data to load
+	if current_scene.get_node_or_null("Player") != null:
+		# trying to move old player node to new node as a child causes queue free issues
+		# For some reason it just keeps spawning the next area and filling up memory
+		# So we have to move data this way...
+		player_data = get_player_data(current_scene.get_node("Player"))
+		player_data = player_data["Player"]
+	# Rest of this function is like deferred goto scene
+	_load_area_with_player_data(area_path, true, target_spawn, player_data)
+	
+	
+func _load_area_with_player_data(area_path: String, is_spawn_anchor: bool, target_spawn, player_data: Dictionary):
+	# Free scene
+	current_scene.queue_free()
+	# Load the scene of the next_area
+	var area_name = area_path
+	area_path = Global.AREAS[area_path]
+	var next_area = ResourceLoader.load(area_path)
+	current_scene = next_area.instance()
+	current_area_name = area_name
+	# Might want to use constant variables for hardcoded node paths
+	# Set player Spawn point
+	var player_spawn_position;
+	if is_spawn_anchor: # It specifies a node path for a location in the next area
+		player_spawn_position = current_scene.get_node(target_spawn).position
+	else: # it's in x y format
+		player_spawn_position = Vector2(target_spawn["x"], target_spawn["y"])
+		
+	var player = ResourceLoader.load(PLAYER).instance()
+	if not player_data.empty():
+		# Might consider using a dictionary within the player
+		# Node itself in order to loop through and load player stats more
+		# easily with the saved dictionary dictionary data
+		player.hit_points = player_data["hit_points"]
+	player.position = player_spawn_position
+	
+	# Set player camera limits based on area limits
+	player.get_node("Camera2D").limit_left = current_scene.camera_left_limit
+	player.get_node("Camera2D").limit_right = current_scene.camera_right_limit
+	
+	current_scene.add_child(player)
+
+	# Add it to the active scene, as child of root.
+	get_tree().get_root().add_child(current_scene)
+
+	# Optionally, to make it compatible with the SceneTree.change_scene() API.
+	get_tree().set_current_scene(current_scene)
+	
 	
 # Assumes no persist node is under another persist node
 # Call when instantiating a world I guess.
@@ -80,32 +162,32 @@ func load_game():
 	if not save_game.file_exists("user://savegame.save"):
 		return # Error! We don't have a save to load.
 
-	# We need to revert the game state so we're not cloning objects
-	# during loading. This will vary wildly depending on the needs of a
-	# project, so take care with this step.
-	# For our example, we will accomplish this by deleting saveable objects.
-	var save_nodes = get_tree().get_nodes_in_group("Persist")
-	for i in save_nodes:
-		i.queue_free()
-
+	# Data we want to load is here
+	var player_data;
+	var spawn_position;
+	var spawn_area;
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
 	save_game.open("user://savegame.save", File.READ)
-	while save_game.get_position() < save_game.get_len():
+	#while save_game.get_position() < save_game.get_len():
 		# Get the saved dictionary from the next line in the save file
-		var node_data = parse_json(save_game.get_line())
+	#	var node_data = parse_json(save_game.get_line())
 		# 
-		var new_object = load(node_data["filename"]).instance()
-		new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
-
-		# Now we set the remaining variables.
-		for i in node_data.keys():
-			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
-				continue
-			new_object.set(i, node_data[i])
-		get_node(node_data["parent"]).add_child(new_object)
+		
+	# Code if we save in one line
+	var node_data = parse_json(save_game.get_line()) # Currently it's one line so it is how it is
+	for key in node_data:
+		match key:
+			"PlayerInfo":
+				var data = node_data["PlayerInfo"]
+				player_data = data["Player"]
+				var location = data["Location"]
+				spawn_position = Vector2(location["x"], location["y"])
+				spawn_area = location["Area"]
+			_:
+				pass
 	save_game.close()
-	print("Loaded!")
+	call_deferred("_load_area_with_player_data", spawn_area, false, spawn_position, player_data)
 	
 # Go through everything in the persist category and ask them to return a
 # dict of relevant variables.
@@ -114,22 +196,21 @@ func save_game():
 	var save_game = File.new()
 	save_game.open("user://savegame.save", File.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
+	var node_data = {}
 	for node in save_nodes:
 		# Check the node is an instanced scene so it can be instanced again during load.
-		if node.filename.empty():
-			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
-			continue
-
-		# Check the node has a save function.
-		if !node.has_method("save"):
-			print("persistent node '%s' is missing a save() function, skipped" % node.name)
-			continue
-
-		# Call the node's save function.
-		var node_data = node.call("save")
+		var node_name = node.get_name()
+		# Different behaviour for different things
+		match node_name:
+			"Player":
+				node_data["PlayerInfo"] = get_player_data(node)
+			_:
+				pass
 
 		# Store the save dictionary as a new line in the save file.
-		save_game.store_line(to_json(node_data))
+	
+	# Currently it just stores one line I know
+	save_game.store_line(to_json(node_data))
 	save_game.close()
 	print("Saved!")
 	
