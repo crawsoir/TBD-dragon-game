@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/forest/demo-transition-areas/demo-area-3/forest_demo_transition_p3.gd" type="Script" id=1]
 [ext_resource path="res://scenes/forest/assets/forest_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/forest/demo-transition-areas/DetectionArea2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://entities/temp_folder_harmful_block/HarmfulBlock.tscn" type="PackedScene" id=4]
 
-[node name="Node2D" type="Node2D"]
+[node name="ForestDemoThree" type="Node2D"]
 position = Vector2( 13, 55 )
 script = ExtResource( 1 )
 
@@ -51,6 +52,9 @@ position = Vector2( -14, 105 )
 
 [node name="DefaultSpawn" type="Position2D" parent="."]
 position = Vector2( 539, -83 )
+
+[node name="HarmfulBlock" parent="." instance=ExtResource( 4 )]
+position = Vector2( 706, -118 )
 
 [connection signal="body_entered" from="SceneChangeMarkers/TopLeftSceneChangePosMarker/TopLeftDetectionArea2D" to="." method="_on_TopLeftDetectionArea2D_body_entered"]
 [connection signal="body_entered" from="SceneChangeMarkers/BottomLeftSceneChangePosMarker/BottomLeftDetectionArea2D" to="." method="_on_BottomLeftDetectionArea2D_body_entered"]

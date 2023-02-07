@@ -13,7 +13,7 @@ func _ready():
 func _on_TopLeftDetectionArea2D_body_entered(body):
 	if body.get_name() == "Player":
 		Global.move_to_area("FOREST_DEMO_ONE", "SpawnMarkers/TopRightSpawn")
-
+		
 
 func _on_BottomLeftDetectionArea2D_body_entered(body):
 	if body.get_name() == "Player":
