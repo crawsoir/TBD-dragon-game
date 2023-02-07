@@ -2,6 +2,7 @@ extends Node
 
 # Variables for managing scenes
 var CONFIRMATION_BOX = "res://gui/ConfirmationBox.tscn"
+var DIALOGUE_BOX = "res://gui/DialogueBox.tscn"
 var GAME_OVER_SCREEN = "res://gui/GameOverScreen.tscn"
 var GAME_SCREEN = "res://scenes/playground/playground_scene.tscn"
 var OPTIONS_SCREEN = "res://gui/OptionsScreen.tscn"

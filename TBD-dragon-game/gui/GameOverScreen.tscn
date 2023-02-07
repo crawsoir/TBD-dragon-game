@@ -38,6 +38,9 @@ script = ExtResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 1, 0.847059, 0.847059, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="DeathScreenArt" type="Sprite" parent="."]
 position = Vector2( 757, 405 )
@@ -56,11 +59,16 @@ custom_fonts/font = SubResource( 2 )
 text = "GAME OVER"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 138.0
-margin_top = 372.0
+margin_top = -228.0
 margin_right = 390.0
-margin_bottom = 478.0
+margin_bottom = -122.0
 custom_constants/separation = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Try Again" type="Button" parent="VBoxContainer"]
 margin_right = 252.0

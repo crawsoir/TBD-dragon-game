@@ -39,11 +39,16 @@ custom_fonts/font = SubResource( 1 )
 text = "PAUSED"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 71.0
-margin_top = 526.0
+margin_top = -74.0
 margin_right = 741.0
-margin_bottom = 568.0
+margin_bottom = -32.0
 custom_constants/separation = 60
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Resume" type="Button" parent="HBoxContainer"]
 margin_right = 88.0

@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://entities/npc/npc.gd" type="Script" id=2]
+[ext_resource path="res://entities/npc/talk.png" type="Texture" id=3]
+[ext_resource path="res://entities/npc/question_mark.png" type="Texture" id=4]
+[ext_resource path="res://entities/npc/ex_mark.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 45.5, 26 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 96, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "exclaim",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "none",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "quest",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "talk",
+"speed": 3.0
+} ]
+
+[node name="Npc" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+dialogue_path = "res://gui/DummyDialogue.json"
+
+[node name="NPCCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 5 )
+
+[node name="PlayerArea2D" type="Area2D" parent="."]
+
+[node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
+position = Vector2( -0.5, -10 )
+shape = SubResource( 4 )
+
+[node name="NpcSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="HoverSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -40 )
+frames = SubResource( 3 )
+animation = "none"
+playing = true
+
+[connection signal="body_entered" from="PlayerArea2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="PlayerArea2D" to="." method="_on_Area2D_body_exited"]
