@@ -1,0 +1,28 @@
+extends PlayerState
+
+export (NodePath) var _animation_player
+onready var animation_player:AnimationPlayer = get_node(_animation_player)
+
+var snap_vector = Vector2.DOWN * 16
+
+func enter(_msg := {}) -> void:
+	animation_player.play("Run")
+	
+
+func physics_update(delta: float) -> void:
+	if not player.is_on_floor():
+		state_machine.transition_to("Jump")
+		return
+		
+	player.velocity.y += player.gravity * delta
+	if player.get_input_direction() > 0:
+		player.velocity.x = player.speed
+	elif player.get_input_direction() < 0:
+		player.velocity.x = -player.speed
+	
+	player.velocity = player.move_and_slide_with_snap(player.velocity, snap_vector, Vector2.UP)
+	
+	if Input.is_action_just_pressed("jump"):
+		state_machine.transition_to("Jump", {do_jump = true})
+	elif is_zero_approx(player.get_input_direction()):
+		state_machine.transition_to("Idle")
