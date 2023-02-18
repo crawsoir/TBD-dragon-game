@@ -67,7 +67,6 @@ func continue_game():
 	call_deferred("_continue_game_helper")
 
 func _continue_game_helper():
-	_deferred_goto_scene(GAME_SCREEN)
 	load_game()
 	
 	
