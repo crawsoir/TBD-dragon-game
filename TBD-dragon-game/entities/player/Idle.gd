@@ -16,6 +16,8 @@ func physics_update(delta: float) -> void:
 	player.velocity.x = 0
 	player.velocity = player.move_and_slide(player.velocity, Vector2.UP)
 
+	if Input.is_action_pressed("ui_cancel"):
+		Global.goto_scene(Global.PAUSE_SCREEN)
 	if Input.is_action_just_pressed("jump"):
 		state_machine.transition_to("Jump", {do_jump = true})
 	elif not is_zero_approx(player.get_input_direction()):

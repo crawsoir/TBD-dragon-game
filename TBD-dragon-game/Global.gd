@@ -62,6 +62,7 @@ func _deferred_goto_scene(path):
 
 	# Optionally, to make it compatible with the SceneTree.change_scene() API.
 	get_tree().set_current_scene(current_scene)
+	
 
 func continue_game():
 	call_deferred("_continue_game_helper")
@@ -93,7 +94,6 @@ func get_player_data(player):
 
 # For the player moving between different areas.
 func move_to_area(area_path: String, target_spawn: String):
-	print("Here!")
 	call_deferred("_move_to_area", area_path, target_spawn) # do things safely
 
 func _move_to_area(area_path: String, target_spawn: String):
@@ -186,6 +186,7 @@ func load_game():
 				spawn_area = location["Area"]
 			_:
 				pass
+	print(node_data)
 	save_game.close()
 	call_deferred("_load_area_with_player_data", spawn_area, false, spawn_position, player_data)
 	

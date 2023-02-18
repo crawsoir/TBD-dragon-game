@@ -19,7 +19,7 @@ func _ready() -> void:
 	for child in get_children():
 		child.state_machine = self
 	state.enter()
-
+	
 
 # The state machine subscribes to node callbacks and delegates them to the state objects.
 func _unhandled_input(event: InputEvent) -> void:

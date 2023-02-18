@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://entities/player/player_sprites.png" type="Texture" id=1]
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=2]
@@ -85,6 +85,9 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 32, 32 )
+
 [node name="Player" type="KinematicBody2D" groups=["Persist"]]
 script = ExtResource( 2 )
 
@@ -110,10 +113,6 @@ anims/die = SubResource( 3 )
 script = ExtResource( 4 )
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource( 3 )
-_animation_player = NodePath("../../AnimationPlayer")
-
 [node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
 _animation_player = NodePath("../../AnimationPlayer")
@@ -121,3 +120,14 @@ _animation_player = NodePath("../../AnimationPlayer")
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
 _animation_player = NodePath("../../AnimationPlayer")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 3 )
+_animation_player = NodePath("../../AnimationPlayer")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 7 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
