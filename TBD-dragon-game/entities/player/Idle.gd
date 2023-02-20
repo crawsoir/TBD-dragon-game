@@ -6,7 +6,7 @@ onready var animation_player:AnimationPlayer = get_node(_animation_player)
 
 func enter(_msg := {}) -> void:
 	animation_player.play("Idle")
-	
+	player.can_dash = player.dash_unlocked
 
 func physics_update(delta: float) -> void:
 	if not player.is_on_floor():
@@ -20,5 +20,7 @@ func physics_update(delta: float) -> void:
 		Global.goto_scene(Global.PAUSE_SCREEN)
 	if Input.is_action_just_pressed("jump"):
 		state_machine.transition_to("Jump", {do_jump = true})
+	if Input.is_action_just_pressed("dash") and player.can_dash:
+		state_machine.transition_to("Dash")
 	elif not is_zero_approx(player.get_input_direction()):
 		state_machine.transition_to("Run")

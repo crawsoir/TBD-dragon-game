@@ -185,7 +185,6 @@ func load_game():
 				spawn_area = location["Area"]
 			_:
 				pass
-	print(node_data)
 	save_game.close()
 	call_deferred("_load_area_with_player_data", spawn_area, false, spawn_position, player_data)
 	

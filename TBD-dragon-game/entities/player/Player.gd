@@ -1,13 +1,20 @@
 class_name Player
 extends KinematicBody2D
 
-var speed = 500
-var jump_impulse = 800
+var speed = 400
+var jump_impulse = 700
 var gravity = 1400
+var coyote_duration = .2
+
+var dash_unlocked = true
+var dash_speed = 1000
+var dash_duration = .2
+var can_dash = dash_unlocked
 
 var max_hp = 5
 var hit_points = 5
 var alive = true
+var player_direction := Vector2(1, 0)
 
 var velocity := Vector2.ZERO
 
@@ -16,14 +23,19 @@ signal death_triggered
 func get_input_direction() -> float:
 	var direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	
-	"""sprite flipping
+	#sprite flipping
 	if direction < 0:
 		$Sprite.flip_h = true
+		player_direction = Vector2(-1, 0)
 	if direction > 0:
 		$Sprite.flip_h = false
-	"""
+		player_direction = Vector2(1, 0)
 	
 	return direction
+	
+func get_last_state():
+	return $StateMachine.last_state_str
+
 
 # Copied from https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html
 

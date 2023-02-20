@@ -12,6 +12,10 @@ export var initial_state := NodePath()
 # The current active state. At the start of the game, we get the `initial_state`.
 onready var state: State = get_node(initial_state)
 
+# The previous state
+var last_state_str = initial_state
+var current_state_str = initial_state
+
 
 func _ready() -> void:
 	yield(owner, "ready")
@@ -48,3 +52,6 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	state = get_node(target_state_name)
 	state.enter(msg)
 	emit_signal("transitioned", state.name)
+	
+	last_state_str = current_state_str
+	current_state_str = target_state_name

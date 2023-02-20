@@ -3,13 +3,16 @@ extends PlayerState
 
 export (NodePath) var _animation_player
 onready var animation_player:AnimationPlayer = get_node(_animation_player)
-
+onready var coyote_timer:Timer = $CoyoteTimer
 
 func enter(msg := {}) -> void:
+	animation_player.play("Jump")
+	
 	if msg.has("do_jump"):
 		player.velocity.y = -player.jump_impulse
-		animation_player.play("Jump")
-
+		
+	#coyote time
+	coyote_timer.one_shot = true
 
 func physics_update(delta: float) -> void:
 	player.velocity.y += player.gravity * delta
@@ -23,8 +26,18 @@ func physics_update(delta: float) -> void:
 	
 	if Input.is_action_pressed("ui_cancel"):
 		Global.goto_scene(Global.PAUSE_SCREEN)
+	if Input.is_action_just_pressed("dash") and player.can_dash:
+		state_machine.transition_to("Dash")
+	if Input.is_action_just_pressed("jump"):
+		coyote_timer.wait_time = player.coyote_duration
+		coyote_timer.start()
+		
 	if player.is_on_floor():
-		if is_zero_approx(player.get_input_direction()):
+		if player.dash_unlocked:
+			player.can_dash = true
+		if not coyote_timer.is_stopped():
+			state_machine.transition_to("Jump", {do_jump = true})
+		elif is_zero_approx(player.get_input_direction()):
 			state_machine.transition_to("Idle")
 		else:
 			state_machine.transition_to("Run")
