@@ -1,4 +1,5 @@
 # Virtual base class for all states.
+# Credit: https://www.youtube.com/watch?v=68fMTGjY6Lk
 class_name State
 extends Node
 

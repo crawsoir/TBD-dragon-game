@@ -1,5 +1,6 @@
 # Generic state machine. Initializes states and delegates engine callbacks
 # (_physics_process, _unhandled_input) to the active state.
+# Credit: https://www.youtube.com/watch?v=68fMTGjY6Lk
 class_name StateMachine
 extends Node
 
