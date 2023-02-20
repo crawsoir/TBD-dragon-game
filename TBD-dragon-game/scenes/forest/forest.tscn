@@ -119,6 +119,22 @@ tile_data = PoolIntArray( -4652900, 67, 0, -4652899, 68, 0, -4652898, 68, 0, -46
 [node name="BgTileMapBushes" type="TileMap" parent="BgStuff"]
 format = 1
 
+[node name="Fade" type="Node2D" parent="."]
+z_index = -1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="Fade"]
+margin_left = -197.0
+margin_top = -5910.0
+margin_right = 14000.0
+margin_bottom = 1794.0
+color = Color( 0.572549, 0.772549, 0.839216, 0.345098 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
 tile_set = ExtResource( 1 )
