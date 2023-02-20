@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/dialog_audio.wav-3824a902e7c23fc80b722678cb28ea2c.sample"
+path="res://.import/Normal.wav-45937c672d0f5accb7f1089d751bf482.sample"
 
 [deps]
 
-source_file="res://entities/player/dialog_audio.wav"
-dest_files=[ "res://.import/dialog_audio.wav-3824a902e7c23fc80b722678cb28ea2c.sample" ]
+source_file="res://gui/assets/Normal.wav"
+dest_files=[ "res://.import/Normal.wav-45937c672d0f5accb7f1089d751bf482.sample" ]
 
 [params]
 

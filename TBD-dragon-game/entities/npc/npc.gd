@@ -46,7 +46,7 @@ func play_animation():
 		$NpcSprite.animation = "idle"
 		
 func _input(event):
-	if Input.is_action_just_pressed("ui_accept") and can_interact:
+	if Input.is_action_just_pressed("interact") and can_interact:
 		can_interact = false
 		$HoverSprite.visible = false
 		Global.goto_overlay(Global.DIALOGUE_BOX)

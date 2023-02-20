@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MeNeutral.png-7055e63e88a893c0bf3268c1d32e545a.stex"
+path="res://.import/MeHappy.png-31137a06f4dc80d1fc40ecefc836d321.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gui/MeNeutral.png"
-dest_files=[ "res://.import/MeNeutral.png-7055e63e88a893c0bf3268c1d32e545a.stex" ]
+source_file="res://gui/assets/MeHappy.png"
+dest_files=[ "res://.import/MeHappy.png-31137a06f4dc80d1fc40ecefc836d321.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

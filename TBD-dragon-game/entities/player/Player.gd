@@ -25,10 +25,10 @@ func get_input_direction() -> float:
 	
 	#sprite flipping
 	if direction < 0:
-		$Sprite.flip_h = true
+		$Sprites.scale.x = -1
 		player_direction = Vector2(-1, 0)
 	if direction > 0:
-		$Sprite.flip_h = false
+		$Sprites.scale.x = 1
 		player_direction = Vector2(1, 0)
 	
 	return direction
@@ -58,10 +58,14 @@ func get_state():
 
 # HP related
 func take_damage(damage:int):
+	$AnimationPlayer.play("Hit")
+	
 	print("Took damage!")
 	print("Current Hp is ", hit_points)
 	hit_points = clamp(hit_points - damage, 0, max_hp)
 	if hit_points <= 0:
+		$AnimationPlayer.play("Death")
+		
 		print("Died!")
 		alive = false
 		# emit_signal("death_triggered") TODO keep as below or fix later

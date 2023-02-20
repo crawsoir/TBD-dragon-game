@@ -5,7 +5,7 @@ onready var animation_player:AnimationPlayer = get_node(_animation_player)
 onready var dash_timer:Timer = $DashTimer
 
 func enter(_msg := {}) -> void:
-	animation_player.play("Run")
+	animation_player.play("Dash")
 	player.velocity.y = 0
 	player.velocity.x = player.player_direction.x * player.dash_speed
 	

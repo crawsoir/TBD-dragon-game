@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_sprites.png-5651099d32bbb4bfbd77ca679152fe5a.stex"
+path="res://.import/MeNeutralHandsMouth.png-9042885efe6f8186f7be72970cfe4048.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/player_sprites.png"
-dest_files=[ "res://.import/player_sprites.png-5651099d32bbb4bfbd77ca679152fe5a.stex" ]
+source_file="res://gui/assets/MeNeutralHandsMouth.png"
+dest_files=[ "res://.import/MeNeutralHandsMouth.png-9042885efe6f8186f7be72970cfe4048.stex" ]
 
 [params]
 

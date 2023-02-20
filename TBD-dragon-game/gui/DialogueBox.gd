@@ -20,7 +20,7 @@ func _process(delta):
 	get_tree().paused = true
 	
 	$Indicator.visible = finished
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("interact"):
 		if finished:
 			nextPhrase()
 		else:    
@@ -28,7 +28,7 @@ func _process(delta):
 	
 func getDialogue() -> Array:
 	var f = File.new()
-	assert(f.file_exists(dialoguePath), "File path does not exist" +dialoguePath)
+	assert(f.file_exists(dialoguePath), "File path does not exist: " +dialoguePath)
 	
 	f.open(dialoguePath, File.READ)
 	var json = f.get_as_text()
@@ -55,18 +55,31 @@ func nextPhrase() -> void:
 	
 	var f = File.new()
 	
-	#TODO: relocate where images and audio are stored 
+	var img_position = "left"
+	if dialogue[phraseNum].has("Position"):
+		img_position = dialogue[phraseNum]["Position"].to_lower()
+	
+	#TODO: this could be broken up into smaller functions
 	# loading portrait image
 	var img = imgPath + dialogue[phraseNum]["Name"] + dialogue[phraseNum]["Emotion"] + ".png"
 	if f.file_exists(img):
 		$Portrait.texture = load(img)
+		
+		match img_position:
+			"right":
+				$Portrait.flip_h = true
+				$Portrait.position.x = 550
+			_:
+				$Portrait.flip_h = false
+				$Portrait.position.x = 173
+		
 	else:
 		$Portrait.texture = null
 		print("not found " + img)
 	
 	#TODO: localize sound effects in json, like with images
 	# loading dialogue sound effect
-	var sound = audioPath # + dialogue[phraseNum]["Name"] + dialogue[phraseNum]["Sound"] + ".wav"
+	var sound = audioPath + dialogue[phraseNum]["Sound"] + ".wav"
 	if f.file_exists(audioPath):
 		$AudioStreamPlayer.stream = load(audioPath)
 	else:

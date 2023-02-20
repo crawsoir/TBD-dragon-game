@@ -11,7 +11,6 @@ func enter(_msg := {}) -> void:
 func physics_update(delta: float) -> void:
 	if not player.is_on_floor():
 		state_machine.transition_to("Jump")
-		return
 	
 	player.velocity.x = 0
 	player.velocity = player.move_and_slide(player.velocity, Vector2.UP)
@@ -22,5 +21,7 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Jump", {do_jump = true})
 	if Input.is_action_just_pressed("dash") and player.can_dash:
 		state_machine.transition_to("Dash")
+	if Input.is_action_just_pressed("claw_atk"):
+		state_machine.transition_to("Claw_Atk")
 	elif not is_zero_approx(player.get_input_direction()):
 		state_machine.transition_to("Run")

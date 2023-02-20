@@ -6,8 +6,6 @@ onready var animation_player:AnimationPlayer = get_node(_animation_player)
 onready var coyote_timer:Timer = $CoyoteTimer
 
 func enter(msg := {}) -> void:
-	animation_player.play("Jump")
-	
 	if msg.has("do_jump"):
 		player.velocity.y = -player.jump_impulse
 		
@@ -15,6 +13,11 @@ func enter(msg := {}) -> void:
 	coyote_timer.one_shot = true
 
 func physics_update(delta: float) -> void:
+	if player.velocity.y > 0:
+		animation_player.play("Fall")
+	else:
+		animation_player.play("Jump")
+	
 	player.velocity.y += player.gravity * delta
 	if player.get_input_direction() > 0:
 		player.velocity.x = player.speed
@@ -31,6 +34,8 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		coyote_timer.wait_time = player.coyote_duration
 		coyote_timer.start()
+	if Input.is_action_just_pressed("claw_atk"):
+		state_machine.transition_to("Claw_Atk")
 		
 	if player.is_on_floor():
 		if player.dash_unlocked:
