@@ -1,0 +1,22 @@
+extends PlayerState
+
+export (NodePath) var _animation_player
+
+onready var animation_player:AnimationPlayer = get_node(_animation_player)
+
+
+func enter(_msg := {}) -> void:
+	animation_player.play("Claw_Atk")
+
+func physics_update(delta: float) -> void:
+	player.velocity.x = 0
+	player.velocity.y += player.gravity * delta
+	player.velocity = player.move_and_slide(player.velocity, Vector2.UP)
+
+	if Input.is_action_pressed("ui_cancel"):
+		Global.goto_scene(Global.PAUSE_SCREEN)
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Claw_Atk":
+		state_machine.transition_to("Idle")

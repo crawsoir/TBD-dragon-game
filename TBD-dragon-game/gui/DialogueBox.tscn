@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://gui/DialogueBox.gd" type="Script" id=1]
 [ext_resource path="res://fonts/DTNouveau-Regular.otf" type="DynamicFontData" id=2]
-[ext_resource path="res://gui/MeNeutral.png" type="Texture" id=3]
+[ext_resource path="res://gui/assets/Normal.wav" type="AudioStream" id=4]
+
+[sub_resource type="StreamTexture" id=7]
+flags = 4
 
 [sub_resource type="DynamicFont" id=5]
 size = 30
@@ -43,7 +46,7 @@ tracks/0/keys = {
 "values": [ Vector2( -204, 418 ), Vector2( -204, 422 ) ]
 }
 
-[node name="Dialogue" type="CanvasLayer"]
+[node name="Dialogue Box" type="CanvasLayer"]
 
 [node name="Dialogue Box" type="ColorRect" parent="."]
 pause_mode = 2
@@ -57,15 +60,17 @@ margin_right = 334.52
 margin_bottom = -28.0
 script = ExtResource( 1 )
 dialoguePath = "res://gui/DummyDialogue.json"
-imgPath = "res://gui/"
-audioPath = "res://entities/player/dialog_audio.wav"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dialogue Box"]
-volume_db = -10.0
+imgPath = "res://gui/assets/"
+audioPath = "res://gui/assets/"
 
 [node name="Portrait" type="Sprite" parent="Dialogue Box"]
-position = Vector2( 171, -167 )
-texture = ExtResource( 3 )
+position = Vector2( 173, -125 )
+scale = Vector2( 0.5, 0.5 )
+texture = SubResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dialogue Box"]
+stream = ExtResource( 4 )
+volume_db = -10.0
 
 [node name="Name" type="RichTextLabel" parent="Dialogue Box"]
 margin_left = 12.0
