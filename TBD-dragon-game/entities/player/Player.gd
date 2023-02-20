@@ -4,7 +4,6 @@ extends KinematicBody2D
 var speed = 400
 var jump_impulse = 700
 var gravity = 1400
-var coyote_duration = .2
 
 var dash_unlocked = true
 var dash_speed = 1000

@@ -5,6 +5,8 @@ export (NodePath) var _animation_player
 onready var animation_player:AnimationPlayer = get_node(_animation_player)
 onready var coyote_timer:Timer = $CoyoteTimer
 
+var coyote_duration = .2
+
 func enter(msg := {}) -> void:
 	if msg.has("do_jump"):
 		player.velocity.y = -player.jump_impulse
@@ -32,7 +34,7 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_pressed("dash") and player.can_dash:
 		state_machine.transition_to("Dash")
 	if Input.is_action_just_pressed("jump"):
-		coyote_timer.wait_time = player.coyote_duration
+		coyote_timer.wait_time = coyote_duration
 		coyote_timer.start()
 	if Input.is_action_just_pressed("claw_atk"):
 		state_machine.transition_to("Claw_Atk")
