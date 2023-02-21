@@ -2,7 +2,7 @@ class_name Player
 extends KinematicBody2D
 
 var speed = 400
-var jump_impulse = 700
+var jump_impulse = 800
 var gravity = 1400
 
 #var dash_unlocked = true

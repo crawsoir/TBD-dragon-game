@@ -13,7 +13,9 @@ var PLAYER = "res://entities/player/Player.tscn"
 var AREAS = {
 	"FOREST_DEMO_ONE": "res://scenes/forest/demo-transition-areas/demo-area-1/forest_demo_transition_p1.tscn",
 	"FOREST_DEMO_TWO": "res://scenes/forest/demo-transition-areas/demo-area-2/forest_demo_transition_p2.tscn",
-	"FOREST_DEMO_THREE": "res://scenes/forest/demo-transition-areas/demo-area-3/forest_demo_transition_p3.tscn"
+	"FOREST_DEMO_THREE": "res://scenes/forest/demo-transition-areas/demo-area-3/forest_demo_transition_p3.tscn",
+	"FOREST": "res://scenes/forest/forest.tscn",
+	"CAVE": "res://scenes/cave/starter_cave.tscn"
 }
 
 var current_scene = null
