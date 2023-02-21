@@ -5,7 +5,7 @@ extends RigidBody2D
 # Declare member variables here. Examples:
 export var sprite_path = "res://entities/item/assets/DefaultItem.png"
 var can_interact = false
-var item_name = "DEFAULT"
+export var item_name = "DEFAULT"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var sprite_texture = load(sprite_path)

@@ -89,6 +89,7 @@ func add_item(item_name):
 		if index != null && ItemBehaviour.ITEM_DATA[item_name]["Stackable"]:
 			info["items"][index]["count"] += 1
 		else: # Either not stackable or can't find the item
+			print("Not stackable or can't find!")
 			info["items"][get_first_empty_slot()] = {"Name": item_name, "count": 1}
 		return true
 	return false # Shouldn't reach here
@@ -108,8 +109,8 @@ func get_first_empty_slot():
 	# Find the first empty space in the inventory
 	# Otherwise return null 
 	for i in range(info["max_inv_size"]):
-		if not i in info["items"]:
-			return i
+		if !(str(i) in info["items"].keys()):
+			return str(i) # str because Json cannot stores numbers as keys
 	return null
 
 func move_item(initial_index, target_index):
