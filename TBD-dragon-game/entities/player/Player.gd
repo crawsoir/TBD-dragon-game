@@ -13,6 +13,22 @@ var can_dash = dash_unlocked
 var max_hp = 5
 var hit_points = 5
 var alive = true
+
+# Persistent variables should be stored here
+var info = {
+	"max_hp": 5,
+	"hit_points": 5,
+	"alive": true,
+	"dash_unlocked": true,
+	"can_dash": true,
+	"items": {} # Will store items carried by player
+	# Ex Item List:
+	# {"PEACH": {"count": 1}, "BERRY": {"count":2}}
+}
+
+func _ready():
+	print(info) # Check if info is there
+
 var player_direction := Vector2(1, 0)
 
 var velocity := Vector2.ZERO
@@ -35,44 +51,27 @@ func get_input_direction() -> float:
 func get_last_state():
 	return $StateMachine.last_state_str
 
-
-# Copied from https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html
-
-func save(): 
-	var save_dict = {
-		"filename" : get_filename(),
-		"parent" : get_parent().get_path(),
-		"pos_x" : position.x, # Vector2 is not supported by JSON
-		"pos_y" : position.y,
-		"hit_points" : hit_points,
-		"max_hp" : max_hp
-	}
-	return save_dict
-
 func get_state():
-	var save_dict = {
-		"hit_points" : hit_points,
-	}
-	return save_dict
+	return info
 
 # HP related
 func take_damage(damage:int):
 	$AnimationPlayer.play("Hit")
 	
 	print("Took damage!")
-	print("Current Hp is ", hit_points)
-	hit_points = clamp(hit_points - damage, 0, max_hp)
-	if hit_points <= 0:
+	info["hit_points"] = clamp(info["hit_points"] - damage, 0, info["max_hp"])
+	print("Current Hp is ", info["hit_points"])
+	if info["hit_points"] <= 0:
 		$AnimationPlayer.play("Death")
 		
 		print("Died!")
-		alive = false
+		info["alive"] = false
 		# emit_signal("death_triggered") TODO keep as below or fix later
 		Global.goto_scene(Global.GAME_OVER_SCREEN)
 		
 func heal(points:int):
 	print("Healed!")
-	hit_points = clamp(hit_points + points, 0, max_hp)
+	info["hit_points"] = clamp(info["hit_points"] + points, 0, info["max_hp"])
 
 func _on_Area2D_body_entered(body):
 	if not body.get("allergy_damage") == null:

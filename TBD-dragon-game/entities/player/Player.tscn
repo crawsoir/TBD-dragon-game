@@ -307,7 +307,6 @@ scale = Vector2( 1.75, 1.75 )
 script = ExtResource( 2 )
 
 [node name="Sprites" type="Node2D" parent="."]
-scale = Vector2( 1, 1 )
 
 [node name="Attack_Sprite" type="Sprite" parent="Sprites"]
 position = Vector2( 28, -2.28571 )
