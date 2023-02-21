@@ -5,14 +5,14 @@ var speed = 400
 var jump_impulse = 700
 var gravity = 1400
 
-var dash_unlocked = true
+#var dash_unlocked = true
 var dash_speed = 1000
 var dash_duration = .2
-var can_dash = dash_unlocked
+#var can_dash = dash_unlocked
 
-var max_hp = 5
-var hit_points = 5
-var alive = true
+#var max_hp = 5
+#var hit_points = 5
+#var alive = true
 
 # Persistent variables should be stored here
 var info = {
@@ -26,7 +26,7 @@ var info = {
 	# {"PEACH": {"count": 1}, "BERRY": {"count":2}}
 }
 
-func _ready():
+func _ready(): # Prints when it enters the scene tree
 	print(info) # Check if info is there
 
 var player_direction := Vector2(1, 0)
