@@ -21,12 +21,14 @@ var info = {
 	"alive": true,
 	"dash_unlocked": true,
 	"can_dash": true,
-	"items": {} # Will store items carried by player
+	"items": {}, # Will store items carried by player
+	"max_inv_size": 25
 	# Ex Item List:
-	# {"PEACH": {"count": 1}, "BERRY": {"count":2}}
+	# {0: {"Name": "Peach", "count": 1}, 1: {"Name": "Cherry", "count": 1}}
 }
 
 func _ready(): # Prints when it enters the scene tree
+	
 	print(info) # Check if info is there
 
 var player_direction := Vector2(1, 0)
@@ -76,3 +78,49 @@ func heal(points:int):
 func _on_Area2D_body_entered(body):
 	if not body.get("allergy_damage") == null:
 		take_damage(body.get("allergy_damage"))
+		
+# Inventory functions
+		
+func add_item(item_name):
+	if bag_full():
+		return false
+	else:
+		var index = has_item(item_name)
+		if index != null && ItemBehaviour.ITEM_DATA[item_name]["Stackable"]:
+			info["items"][index]["count"] += 1
+		else: # Either not stackable or can't find the item
+			info["items"][get_first_empty_slot()] = {"Name": item_name, "count": 1}
+		return true
+	return false # Shouldn't reach here
+
+func has_item(item_name : String): 
+	# item index in dictionary if item exists, otherwise return null
+	var items = info["items"]
+	for index in items:
+		if item_name == items[index]["Name"]:
+			return index
+	return null
+
+func bag_full():
+	return info["items"].keys().size() == info["max_inv_size"]
+
+func get_first_empty_slot():
+	# Find the first empty space in the inventory
+	# Otherwise return null 
+	for i in range(info["max_inv_size"]):
+		if not i in info["items"]:
+			return i
+	return null
+
+func move_item(initial_index, target_index):
+	# Move item at initial index to target index
+	if not initial_index in info["items"]:
+		return
+	elif not target_index in info["items"]:
+		info["items"][target_index] = info["items"][initial_index]
+		info["items"].erase(initial_index)
+	else:
+		var target = info["items"][target_index]
+		var initial = info["items"][initial_index]
+		info["items"][target_index] = initial
+		info["items"][initial_index] = target
