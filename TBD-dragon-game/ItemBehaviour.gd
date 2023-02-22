@@ -4,8 +4,8 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var sprite_path = "res://entities/item/assets/"
-
+const SPRITE_PATH = "res://entities/item/assets/"
+const USABLE_ITEMS = ["HEAL"]
 var ITEM_DATA = {}
 
 
@@ -20,6 +20,32 @@ func load_item_data():
 	item_data.open("res://entities/item/ItemData.json", File.READ)
 	ITEM_DATA = parse_json(item_data.get_as_text()) # It's just one line
 	item_data.close()
+
+func get_image_path(item_name):
+	var image_name = ITEM_DATA[item_name]["ImageName"]
+	return SPRITE_PATH + image_name
+
+func get_item_texture(item_name):
+	return load(get_image_path(item_name))
+
+func usable(item_name):
+	if ITEM_DATA[item_name]["Type"] in USABLE_ITEMS:
+		return true
+	return false
+	
+# Might need to change this logic in the future
+func use(user, item_name):
+	if !usable(item_name):
+		print("item is not in usable list")
+		return false
+	var type = ITEM_DATA[item_name]["Type"]
+	
+	match type:
+		"HEAL":
+			heal(user, ITEM_DATA[item_name]["Value"])
+		_:
+			print("functionality not implemented for this item")
+	return true
 
 func heal(target, amount):
 	target.heal(amount) # Target must have a heal function

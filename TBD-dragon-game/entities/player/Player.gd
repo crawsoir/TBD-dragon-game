@@ -13,7 +13,9 @@ var dash_duration = .2
 #var max_hp = 5
 #var hit_points = 5
 #var alive = true
-
+var is_inv_open = false
+signal close_inventory
+signal item_obtained
 # Persistent variables should be stored here
 var info = {
 	"max_hp": 5,
@@ -22,7 +24,7 @@ var info = {
 	"dash_unlocked": true,
 	"can_dash": true,
 	"items": {}, # Will store items carried by player
-	"max_inv_size": 25
+	"max_inv_size": 24
 	# Ex Item List:
 	# {0: {"Name": "Peach", "count": 1}, 1: {"Name": "Cherry", "count": 1}}
 }
@@ -30,6 +32,26 @@ var info = {
 func _ready(): # Prints when it enters the scene tree
 	
 	print(info) # Check if info is there
+	
+func _unhandled_input(_event):
+	if Input.is_action_just_pressed("bag"):
+		print("HEre!")
+		if is_inv_open:
+			print("Here1!")
+			emit_signal("close_inventory")
+			is_inv_open = false
+		else: # generate inventory with signal attached to it
+			print("Here2!")
+			var inventory_path = "res://gui/inventory/Inventory.tscn"
+			var inventory_scene = ResourceLoader.load(inventory_path)
+			var inventory_instance = inventory_scene.instance()
+			inventory_instance.player = self
+			self.connect("close_inventory", inventory_instance, "close_inventory")
+			self.connect("item_obtained", inventory_instance, "repaint")
+			#get_tree().get_root().add_child(inventory_instance)
+			add_child(inventory_instance)
+			is_inv_open = true
+			
 
 var player_direction := Vector2(1, 0)
 
@@ -74,6 +96,7 @@ func take_damage(damage:int):
 func heal(points:int):
 	print("Healed!")
 	info["hit_points"] = clamp(info["hit_points"] + points, 0, info["max_hp"])
+	print("Hit points now at " + str(info["hit_points"]))
 
 func _on_Area2D_body_entered(body):
 	if not body.get("allergy_damage") == null:
@@ -82,6 +105,7 @@ func _on_Area2D_body_entered(body):
 # Inventory functions
 		
 func add_item(item_name):
+	print(info["items"])
 	if bag_full():
 		return false
 	else:
@@ -91,6 +115,7 @@ func add_item(item_name):
 		else: # Either not stackable or can't find the item
 			print("Not stackable or can't find!")
 			info["items"][get_first_empty_slot()] = {"Name": item_name, "count": 1}
+		emit_signal("item_obtained")
 		return true
 	return false # Shouldn't reach here
 
@@ -125,3 +150,6 @@ func move_item(initial_index, target_index):
 		var initial = info["items"][initial_index]
 		info["items"][target_index] = initial
 		info["items"][initial_index] = target
+		
+func get_items_list():
+	return info["items"] # A reference to the list of items
