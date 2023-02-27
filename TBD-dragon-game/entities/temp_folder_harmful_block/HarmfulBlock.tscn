@@ -4,8 +4,8 @@
 [ext_resource path="res://entities/temp_folder_harmful_block/HarmfulBlock.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 49.0
-height = 36.0
+radius = 66.0
+height = 52.0
 
 [node name="HarmfulBlock" type="RigidBody2D"]
 mode = 1
@@ -18,3 +18,4 @@ texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+one_way_collision = true
