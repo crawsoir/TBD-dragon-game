@@ -4,6 +4,7 @@ export (NodePath) var _animation_player
 
 onready var animation_player:AnimationPlayer = get_node(_animation_player)
 
+var dmg = 1
 
 func enter(_msg := {}) -> void:
 	animation_player.play("Claw_Atk")
@@ -20,3 +21,8 @@ func physics_update(delta: float) -> void:
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Claw_Atk":
 		state_machine.transition_to("Idle")
+
+
+func _on_Area2D_Attack_body_entered(body):
+	if body.is_in_group("Enemy"):
+		body.take_damage(dmg)

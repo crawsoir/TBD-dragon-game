@@ -1,0 +1,5 @@
+{
+    "APPLE": {"Stackable": true, "Type": "HEAL", "Value": 2, "Description" : "A delicious fresh apple, yum!", "ImageName": "Apple.png"},
+    "QUESTITEM1": {"Stackable": false, "Type": "QUEST", "Value": null, "Description": "You need this for a quest.", "ImageName": "QuestItem1.png"},
+    "DEFAULT": {"Stackable": true, "Type": "DEFAULT", "Value": null, "Description": "This is a testing item.", "ImageName": "DefaultItem.png"}
+}

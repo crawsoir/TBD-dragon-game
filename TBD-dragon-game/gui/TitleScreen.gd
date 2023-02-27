@@ -21,7 +21,7 @@ func _on_Start_pressed():
 	if save_exists:
 		Global.goto_overlay(Global.CONFIRMATION_BOX)
 	else:
-		Global.move_to_area("FOREST_DEMO_ONE","DefaultSpawn")
+		Global.move_to_area("CAVE","DefaultSpawn")
 
 func _on_Continue_pressed():
 	Global.continue_game()
