@@ -35,13 +35,10 @@ func _ready(): # Prints when it enters the scene tree
 	
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("bag"):
-		print("HEre!")
 		if is_inv_open:
-			print("Here1!")
 			emit_signal("close_inventory")
 			is_inv_open = false
 		else: # generate inventory with signal attached to it
-			print("Here2!")
 			var inventory_path = "res://gui/inventory/Inventory.tscn"
 			var inventory_scene = ResourceLoader.load(inventory_path)
 			var inventory_instance = inventory_scene.instance()
@@ -80,7 +77,8 @@ func get_state():
 
 # HP related
 func take_damage(damage:int):
-	$AnimationPlayer.play("Hit")
+	# this should be its own state, it can freeze the player like this
+	#$AnimationPlayer.play("Hit")
 	
 	print("Took damage!")
 	info["hit_points"] = clamp(info["hit_points"] - damage, 0, info["max_hp"])

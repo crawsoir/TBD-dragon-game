@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/honk-sound.mp3-f0f7c2467089c5fb34de169295e49fb6.mp3str"
+
+[deps]
+
+source_file="res://entities/enemy/honk-sound.mp3"
+dest_files=[ "res://.import/honk-sound.mp3-f0f7c2467089c5fb34de169295e49fb6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
