@@ -51,7 +51,6 @@ ItemBehaviour="*res://ItemBehaviour.gd"
 
 window/size/borderless=true
 window/size/fullscreen=true
-window/size/always_on_top=true
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
@@ -148,6 +147,16 @@ bag={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":66,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Scene Transitions"
+2d_physics/layer_3="Items"
+2d_physics/layer_4="NPCs"
+2d_physics/layer_5="Enemies"
+2d_physics/layer_6="Damage to Enemies"
+2d_physics/layer_7="Damage to Player"
 
 [physics]
 

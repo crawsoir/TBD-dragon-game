@@ -140,8 +140,8 @@ extents = Vector2( 144, 160 )
 
 [node name="BasicEnemy" type="KinematicBody2D" groups=["Enemy"]]
 scale = Vector2( 0.2, 0.2 )
-collision_layer = 2
-collision_mask = 10
+collision_layer = 16
+collision_mask = 32
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -161,7 +161,6 @@ position = Vector2( 16, 64 )
 shape = SubResource( 2 )
 
 [node name="FrontRayCast2D" type="RayCast2D" parent="."]
-scale = Vector2( 1, 1 )
 enabled = true
 cast_to = Vector2( -120, 0 )
 
@@ -170,19 +169,17 @@ enabled = true
 cast_to = Vector2( -80, 200 )
 
 [node name="PlayerDetector" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 position = Vector2( -168, 80 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 14 )
 
 [node name="AttackDetector" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDetector"]
 position = Vector2( -92, 7.62939e-06 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 20 )
 disabled = true
 
