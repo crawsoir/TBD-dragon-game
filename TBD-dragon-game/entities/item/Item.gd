@@ -23,11 +23,14 @@ func _ready():
 	var sprite_texture = load(sprite_path)
 	$Sprite.set_texture(sprite_texture)
 
+func on_successful_pickup():
+	pass
 
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("pickup") and can_interact:
 		var player = get_tree().get_root().find_node("Player", true, false)
 		if player.add_item(item_name):
+			on_successful_pickup()
 			self.queue_free()
 		else:
 			print("Bag Full! Or Can't Pick up Item!")

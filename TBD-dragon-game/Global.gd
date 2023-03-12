@@ -35,7 +35,9 @@ var quest_progress = {
 	}
 }
 
-
+var spawnable = {"QUESTITEM1": true} # Maybe add respawn timers idk
+# It's hacky but we'll track player items here briefly when transitioning
+# in order to generate certain items properly
 
 # Functions for managing scenes
 func _ready():
@@ -204,6 +206,12 @@ func load_game():
 				var location = data["Location"]
 				spawn_position = Vector2(location["x"], location["y"])
 				spawn_area = location["Area"]
+			"Quests":
+				var data = node_data["Quests"]
+				quest_progress = data
+			"ItemSpawns":
+				var data = node_data["ItemSpawns"]
+				spawnable = data
 			_:
 				pass
 	save_game.close()
@@ -226,9 +234,11 @@ func save_game():
 				node_data["PlayerInfo"] = get_player_data(node)
 			_:
 				pass
-
-		# Store the save dictionary as a new line in the save file.
-	
+	# Save quest info
+	node_data["Quests"] = quest_progress
+	node_data["ItemSpawns"] = spawnable
+		
+	# Store the save dictionary as a new line in the save file.
 	# Currently it just stores one line I know
 	save_game.store_line(to_json(node_data))
 	save_game.close()

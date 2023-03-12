@@ -12,4 +12,4 @@ position = Vector2( 0, -4.33333 )
 
 [node name="NpcSprite" parent="." index="2"]
 animation = "AdventurerIdle"
-frame = 11
+frame = 12
