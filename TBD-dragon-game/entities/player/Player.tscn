@@ -376,7 +376,8 @@ height = 8.33333
 
 [node name="Player" type="KinematicBody2D" groups=["Persist"]]
 scale = Vector2( 1.75, 1.75 )
-collision_layer = 17
+collision_layer = 3
+collision_mask = 65
 script = ExtResource( 2 )
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -394,8 +395,8 @@ vframes = 8
 frame = 1
 
 [node name="Area2D_Attack" type="Area2D" parent="Sprites"]
-collision_layer = 8
-collision_mask = 0
+collision_layer = 32
+collision_mask = 32
 
 [node name="Atk_CollisionShape2D" type="CollisionShape2D" parent="Sprites/Area2D_Attack"]
 position = Vector2( 20.5714, -1.14286 )
