@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/forest/assets/forest_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/DetectionArea2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/forest/forest.gd" type="Script" id=3]
+[ext_resource path="res://entities/npc/quest_man/quest_man.tscn" type="PackedScene" id=4]
 
 [node name="Forest" type="Node2D"]
 script = ExtResource( 3 )
@@ -209,5 +210,9 @@ position = Vector2( 13605, -705 )
 
 [node name="DefaultSpawn" type="Position2D" parent="."]
 position = Vector2( 4460, 35 )
+
+[node name="QuestMan" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2093, 545 )
+scale = Vector2( 2, 2 )
 
 [connection signal="body_entered" from="SceneChangeMarkers/SceneChangePosMarker1/DetectionArea2D1" to="." method="_on_DetectionArea2D1_body_entered"]

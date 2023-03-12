@@ -23,6 +23,12 @@ var current_area_name = null
 # Variables for Saving and Loading
 # TODO
 
+var quest_progress = {
+	"test_quest": {
+		"Status": "NEW" # NEW, IPR, DONE
+	}
+}
+
 # Functions for managing scenes
 func _ready():
 	var root = get_tree().get_root()
