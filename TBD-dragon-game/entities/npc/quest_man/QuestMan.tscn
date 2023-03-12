@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/npc/npc.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/npc/quest_man/QuestMan.gd" type="Script" id=2]
+
+[node name="Npc" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+dialogue_path = ""
+
+[node name="NPCCollisionShape2D" parent="." index="0"]
+position = Vector2( 0, -4.33333 )
+
+[node name="NpcSprite" parent="." index="2"]
+animation = "AdventurerIdle"
+frame = 11

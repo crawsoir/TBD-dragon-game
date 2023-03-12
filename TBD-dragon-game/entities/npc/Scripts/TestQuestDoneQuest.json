@@ -1,0 +1,10 @@
+[
+    {"Name": "Adventurer", "Emotion": "Neutral", "Text": "Did you find it yet?", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "NeutralHandsMouth", "Text": "Yeah, I got it right here!", "Sound": "Normal"},
+    {"Name": "Adventurer", "Emotion": "Smug", "Text": "Great! Have 3 apples kid.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Shock", "Text": "Just 3 apples?", "Sound": "Normal"},
+    {"Name": "Me", "Emotion": "Annoyed2", "Text": "(Well, I guess it wasn't too hard to find...)", "Sound": "Normal"},
+    {"Name": "Adventurer", "Emotion": "Neutral", "Text": "3 Apples are nothing to laugh at kid. You're going to need it to survive!", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Annoyed1", "Text": "Fine.", "Sound": "Normal"},
+    {"Name": "Adventurer", "Emotion": "Smug", "Text": "Safe Travels, kid.", "Sound": "Normal", "Position": "Right"}
+]

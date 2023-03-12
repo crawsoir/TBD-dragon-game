@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/forest/assets/forest_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/DetectionArea2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/forest/forest.gd" type="Script" id=3]
-[ext_resource path="res://entities/npc/quest_man/quest_man.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entities/npc/quest_man/QuestMan.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entities/item/Item.tscn" type="PackedScene" id=5]
 
 [node name="Forest" type="Node2D"]
 script = ExtResource( 3 )
@@ -211,8 +212,14 @@ position = Vector2( 13605, -705 )
 [node name="DefaultSpawn" type="Position2D" parent="."]
 position = Vector2( 4460, 35 )
 
-[node name="QuestMan" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2093, 545 )
-scale = Vector2( 2, 2 )
+[node name="Npc" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2196, 552 )
+scale = Vector2( 3, 3 )
+
+[node name="Item" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2595, 624 )
+scale = Vector2( 0.5, 0.5 )
+sprite_path = "res://entities/item/assets/QuestItem1.png"
+item_name = "QUESTITEM1"
 
 [connection signal="body_entered" from="SceneChangeMarkers/SceneChangePosMarker1/DetectionArea2D1" to="." method="_on_DetectionArea2D1_body_entered"]

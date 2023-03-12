@@ -1,0 +1,11 @@
+[
+    {"Name": "Adventurer", "Emotion": "Neutral", "Text": "Hey Kid, I need your help.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Annoyed2", "Text": "Why should I do that?", "Sound": "Normal"},
+    {"Name": "Adventurer", "Emotion": "Smug", "Text": "You'll get something good if you do!", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Shock", "Text": "I will?", "Sound": "Normal"},
+    {"Name": "Adventurer", "Emotion": "Neutral", "Text": "Yup! All I need you to do is find a lost scroll I dropped around here.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "NeutralHandsMouth", "Text": "What does it look like?", "Sound": "Normal"},
+    {"Name": "Adventurer", "Emotion": "Neutral", "Text": "It's a brown scroll. You'll know it when you see it.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "LookBack", "Text": "Ok. I guess I'll go look for it then.", "Sound": "Normal"},
+    {"Name": "Adventurer", "Emotion": "Excited", "Text": "Have fun.", "Sound": "Normal", "Position": "Right"}
+]

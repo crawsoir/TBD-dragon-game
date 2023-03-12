@@ -23,11 +23,19 @@ var current_area_name = null
 # Variables for Saving and Loading
 # TODO
 
+# Quest vars
+var NEW_QUEST = "NEW"
+var IPR_QUEST = "IPR"
+var DONE_QUEST = "DONE"
 var quest_progress = {
 	"test_quest": {
-		"Status": "NEW" # NEW, IPR, DONE
+		"Status": NEW_QUEST, # NEW, IPR, DONE,
+		"Items": {"QUESTITEM1": 1},
+		"Rewards": {"APPLE": 3}
 	}
 }
+
+
 
 # Functions for managing scenes
 func _ready():
@@ -85,6 +93,13 @@ func goto_overlay(path):
 
 	# Add it to the active scene, as child of root.
 	get_tree().get_root().add_child(s.instance())
+	
+func get_dialogue(dialogue_path):
+	var dialogue = ResourceLoader.load(DIALOGUE_BOX)
+	var dialogue_instance = dialogue.instance()
+	dialogue_instance.get_node("Dialogue Box").dialoguePath = "res://entities/npc/Scripts/" + dialogue_path
+	
+	get_tree().get_root().add_child(dialogue_instance)
 	
 
 func get_player_data(player):

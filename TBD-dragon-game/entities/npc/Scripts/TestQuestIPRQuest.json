@@ -1,0 +1,5 @@
+[
+    {"Name": "Adventurer", "Emotion": "Neutral", "Text": "Did you find it yet?", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "NeutralHandsMouth", "Text": "What does it look like again?", "Sound": "Normal"},
+    {"Name": "Adventurer", "Emotion": "Neutral", "Text": "It's a brown scroll. You'll know it when you see it.", "Sound": "Normal", "Position": "Right"}
+]
