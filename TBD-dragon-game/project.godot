@@ -158,6 +158,15 @@ bag={
 2d_physics/layer_6="Damage to Enemies"
 2d_physics/layer_7="Damage to Player"
 
+[layer_names]
+
+2d_render/layer_5="enemies"
+2d_navigation/layer_1="player"
+2d_navigation/layer_2="scene transitions"
+2d_navigation/layer_3="items"
+2d_navigation/layer_4="npcs"
+2d_navigation/layer_5="enemies"
+
 [physics]
 
 common/enable_pause_aware_picking=true

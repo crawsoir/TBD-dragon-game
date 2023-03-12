@@ -1,0 +1,5 @@
+[
+    {"Name": "Snake", "Emotion": "Neutral", "Text": "hello world", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Happy", "Text": "here are some words words words words words words words words words words words wordswords words words wordswords", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "AngryFire", "Text": "whoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Sound": "Normal"}
+]
