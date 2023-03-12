@@ -99,31 +99,12 @@ collision_mask = 5
 format = 1
 tile_data = PoolIntArray( 655356, 61, 0, 655357, 61, 0, 655358, 61, 0, 655359, 61, 0, 589824, 61, 0, 589850, 61, 0, 589851, 61, 0, 589852, 61, 0, 589853, 61, 0, 589854, 61, 0, 589855, 61, 0, 589856, 61, 0, 589857, 61, 0, 589858, 61, 0, 589859, 61, 0, 589860, 61, 0, 589861, 61, 0, 589862, 61, 0, 589863, 61, 0, 589864, 61, 0, 589865, 61, 0, 589866, 61, 0, 589867, 61, 0, 589868, 61, 0, 589869, 61, 0, 589870, 61, 0, 589871, 61, 0, 589872, 61, 0, 589873, 61, 0, 589874, 61, 0, 589875, 61, 0, 589876, 61, 0, 589877, 61, 0, 720892, 61, 0, 655412, 61, 0, 655413, 61, 0, 786428, 61, 0, 720948, 61, 0, 720949, 61, 0, 851964, 61, 0, 786484, 61, 0, 786485, 61, 0, 917500, 61, 0, 852020, 61, 0, 852021, 61, 0, 983036, 61, 0, 917556, 61, 0, 917557, 61, 0, 1048572, 61, 0, 983092, 61, 0, 983093, 61, 0, 1114108, 61, 0, 1048628, 61, 0, 1048629, 61, 0, 1179644, 61, 0, 1114164, 61, 0, 1114165, 61, 0, 1245180, 61, 0, 1179700, 61, 0, 1179701, 61, 0, 1310716, 61, 0, 1245236, 61, 0, 1245237, 61, 0, 1376252, 61, 0, 1310772, 61, 0, 1310773, 61, 0, 1441788, 61, 0, 1376308, 61, 0, 1376309, 61, 0, 1441844, 61, 0, 1441845, 61, 0, 1507380, 61, 0, 1507381, 61, 0, 1572916, 61, 0, 1572917, 61, 0, 1638452, 61, 0, 1638453, 61, 0, 1703988, 61, 0, 1703989, 61, 0, 1769524, 61, 0, 1769525, 61, 0, 1835060, 61, 0, 1835061, 61, 0, 1900596, 61, 0, 1900597, 61, 0, 1966132, 61, 0, 1966133, 61, 0, 2031668, 61, 0, 2031669, 61, 0, 2097204, 61, 0, 2097205, 61, 0, 2162740, 61, 0, 2162741, 61, 0, 2228276, 61, 0, 2228277, 61, 0, 2293813, 61, 0, 2359349, 61, 0, 2424885, 61, 0, 2490421, 61, 0, 2555957, 61, 0 )
 
-[node name="Apple" parent="." instance=ExtResource( 7 )]
-position = Vector2( 641, 2332 )
-scale = Vector2( 0.5, 0.5 )
-sprite_path = "res://entities/item/assets/Apple.png"
-item_name = "APPLE"
+[node name="NPC" type="Node" parent="."]
 
-[node name="Apple2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 637, 2344 )
-scale = Vector2( 0.5, 0.5 )
-sprite_path = "res://entities/item/assets/Apple.png"
-item_name = "APPLE"
-
-[node name="Questitem1" parent="." instance=ExtResource( 7 )]
-position = Vector2( 817, 2271 )
-scale = Vector2( 0.5, 0.5 )
-sprite_path = "res://entities/item/assets/QuestItem1.png"
-item_name = "QUESTITEM1"
-
-[node name="BasicEnemy" parent="." instance=ExtResource( 9 )]
-position = Vector2( 560, 1696 )
-
-[node name="GooseEnemy" parent="." instance=ExtResource( 10 )]
-position = Vector2( 231, 1951 )
-
-[node name="Npc" parent="." instance=ExtResource( 11 )]
-position = Vector2( 800, 2467 )
+[node name="Npc" parent="NPC" instance=ExtResource( 11 )]
+position = Vector2( 2539, 1647 )
+scale = Vector2( 2, 2 )
+wandering = false
+idle_animation = "CrowIdle"
 
 [connection signal="body_entered" from="SceneChangeMarkers/SceneChangePosMarker1/DetectionArea2D1" to="." method="_on_DetectionArea2D1_body_entered"]
