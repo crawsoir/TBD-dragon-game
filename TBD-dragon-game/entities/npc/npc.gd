@@ -1,10 +1,11 @@
 extends KinematicBody2D
 
-export var active_type = "talk"
+export var hover_animation = "talk"
 export var has_gravity = true
 export var dialogue_path = ""
 export var wandering = true
-
+export var idle_animation = ""
+export var walk_animation = ""
 var can_interact = false
 
 var velocity = Vector2.ZERO
@@ -37,13 +38,13 @@ func basic_npc_wander():
 		wander_velocity = -wander_velocity
 
 func play_animation():
-	$HoverSprite.animation = active_type
+	$HoverSprite.animation = hover_animation
 	$HoverSprite.visible = can_interact
 	
 	if velocity.x != 0:
-		$NpcSprite.animation = "walk"
-	else:
-		$NpcSprite.animation = "idle"
+		$NpcSprite.animation = idle_animation
+	elif walk_animation != "":
+		$NpcSprite.animation = walk_animation
 		
 func _input(event):
 	if Input.is_action_just_pressed("interact") and can_interact:
