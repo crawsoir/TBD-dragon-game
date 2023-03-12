@@ -13,7 +13,9 @@ var PLAYER = "res://entities/player/Player.tscn"
 var AREAS = {
 	"FOREST_DEMO_ONE": "res://scenes/forest/demo-transition-areas/demo-area-1/forest_demo_transition_p1.tscn",
 	"FOREST_DEMO_TWO": "res://scenes/forest/demo-transition-areas/demo-area-2/forest_demo_transition_p2.tscn",
-	"FOREST_DEMO_THREE": "res://scenes/forest/demo-transition-areas/demo-area-3/forest_demo_transition_p3.tscn"
+	"FOREST_DEMO_THREE": "res://scenes/forest/demo-transition-areas/demo-area-3/forest_demo_transition_p3.tscn",
+	"FOREST": "res://scenes/forest/forest.tscn",
+	"CAVE": "res://scenes/cave/starter_cave.tscn"
 }
 
 var current_scene = null
@@ -134,10 +136,8 @@ func _load_area_with_player_data(area_path: String, is_spawn_anchor: bool, targe
 		
 	var player = ResourceLoader.load(PLAYER).instance()
 	if not player_data.empty():
-		# Might consider using a dictionary within the player
-		# Node itself in order to loop through and load player stats more
-		# easily with the saved dictionary dictionary data
-		player.hit_points = player_data["hit_points"]
+		for persistent_data in player_data:
+			player.info[persistent_data] = player_data[persistent_data]
 	player.position = player_spawn_position
 	
 	# Set player camera limits based on area limits

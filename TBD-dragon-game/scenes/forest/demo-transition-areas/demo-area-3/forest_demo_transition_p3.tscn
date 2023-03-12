@@ -2,8 +2,9 @@
 
 [ext_resource path="res://scenes/forest/demo-transition-areas/demo-area-3/forest_demo_transition_p3.gd" type="Script" id=1]
 [ext_resource path="res://scenes/forest/assets/forest_tiles.tres" type="TileSet" id=2]
-[ext_resource path="res://scenes/forest/demo-transition-areas/DetectionArea2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/DetectionArea2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/temp_folder_harmful_block/HarmfulBlock.tscn" type="PackedScene" id=4]
+
 
 [node name="ForestDemoThree" type="Node2D"]
 position = Vector2( 13, 55 )

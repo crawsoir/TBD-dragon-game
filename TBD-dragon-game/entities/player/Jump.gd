@@ -31,7 +31,7 @@ func physics_update(delta: float) -> void:
 	
 	if Input.is_action_pressed("ui_cancel"):
 		Global.goto_scene(Global.PAUSE_SCREEN)
-	if Input.is_action_just_pressed("dash") and player.can_dash:
+	if Input.is_action_just_pressed("dash") and player.info["can_dash"]:
 		state_machine.transition_to("Dash")
 	if Input.is_action_just_pressed("jump"):
 		coyote_timer.wait_time = coyote_duration
@@ -40,8 +40,8 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Claw_Atk")
 		
 	if player.is_on_floor():
-		if player.dash_unlocked:
-			player.can_dash = true
+		if player.info["dash_unlocked"]:
+			player.info["can_dash"] = true
 		if not coyote_timer.is_stopped():
 			state_machine.transition_to("Jump", {do_jump = true})
 		elif is_zero_approx(player.get_input_direction()):

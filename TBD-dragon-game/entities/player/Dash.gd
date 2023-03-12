@@ -18,7 +18,7 @@ func enter(_msg := {}) -> void:
 func physics_update(delta: float) -> void:
 	if dash_timer.is_stopped():
 		player.velocity.x = 0
-		player.can_dash = false
+		player.info["can_dash"] = false
 		state_machine.transition_to(player.get_last_state())
 	
 	player.velocity = player.move_and_slide(player.velocity, Vector2.UP)
