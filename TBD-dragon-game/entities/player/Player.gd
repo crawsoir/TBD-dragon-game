@@ -117,6 +117,35 @@ func add_item(item_name):
 		return true
 	return false # Shouldn't reach here
 
+# Not the most optimized way to add items nor does it check if we exceeded
+# inventory space
+func add_items(item_name, count):
+	while count > 0:
+		add_item(item_name)
+		count = count - 1
+	
+
+func get_number_of_item(item_name : String):
+	var items = info["items"]
+	var acc = 0
+	for index in items:
+		if item_name == items[index]["Name"]:
+			acc = acc + items[index]["count"]
+	return acc
+
+func remove_items(item_name : String, item_count):
+	# Remove up to item_count items from the inventory
+	var items = info["items"]
+	for index in items:
+		if item_name == items[index]["Name"]:
+			var original_count = items[index]["count"]
+			if item_count >= original_count:
+				item_count = item_count - original_count
+				items.erase(index)
+			else: # original_count < item_count
+				items[index]["count"] = items[index]["count"] - item_count
+				return
+
 func has_item(item_name : String): 
 	# item index in dictionary if item exists, otherwise return null
 	var items = info["items"]

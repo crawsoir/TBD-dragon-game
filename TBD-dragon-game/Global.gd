@@ -23,6 +23,22 @@ var current_area_name = null
 # Variables for Saving and Loading
 # TODO
 
+# Quest vars
+var NEW_QUEST = "NEW"
+var IPR_QUEST = "IPR"
+var DONE_QUEST = "DONE"
+var quest_progress = {
+	"test_quest": {
+		"Status": NEW_QUEST, # NEW, IPR, DONE,
+		"Items": {"QUESTITEM1": 1},
+		"Rewards": {"APPLE": 3}
+	}
+}
+
+var spawnable = {"QUESTITEM1": true} # Maybe add respawn timers idk
+# It's hacky but we'll track player items here briefly when transitioning
+# in order to generate certain items properly
+
 # Functions for managing scenes
 func _ready():
 	var root = get_tree().get_root()
@@ -79,6 +95,13 @@ func goto_overlay(path):
 
 	# Add it to the active scene, as child of root.
 	get_tree().get_root().add_child(s.instance())
+	
+func get_dialogue(dialogue_path):
+	var dialogue = ResourceLoader.load(DIALOGUE_BOX)
+	var dialogue_instance = dialogue.instance()
+	dialogue_instance.get_node("Dialogue Box").dialoguePath = "res://entities/npc/Scripts/" + dialogue_path
+	
+	get_tree().get_root().add_child(dialogue_instance)
 	
 
 func get_player_data(player):
@@ -183,6 +206,12 @@ func load_game():
 				var location = data["Location"]
 				spawn_position = Vector2(location["x"], location["y"])
 				spawn_area = location["Area"]
+			"Quests":
+				var data = node_data["Quests"]
+				quest_progress = data
+			"ItemSpawns":
+				var data = node_data["ItemSpawns"]
+				spawnable = data
 			_:
 				pass
 	save_game.close()
@@ -205,9 +234,11 @@ func save_game():
 				node_data["PlayerInfo"] = get_player_data(node)
 			_:
 				pass
-
-		# Store the save dictionary as a new line in the save file.
-	
+	# Save quest info
+	node_data["Quests"] = quest_progress
+	node_data["ItemSpawns"] = spawnable
+		
+	# Store the save dictionary as a new line in the save file.
 	# Currently it just stores one line I know
 	save_game.store_line(to_json(node_data))
 	save_game.close()

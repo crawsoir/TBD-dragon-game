@@ -1,0 +1,8 @@
+[
+    {"Name": "Squirrel", "Emotion": "Neutral", "Text": "Hey small dragon, there's a village and a castle to the right of you! A fresh princess and tons of gold I bet!", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "AngryFire", "Text": "Hell Yesssss!", "Sound": "Normal"},    
+    {"Name": "Squirrel", "Emotion": "Happy", "Text": "Too bad it's not available in this demo!", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Angry", "Text": "What!????!????????!! I want my money back.", "Sound": "Normal"}, 
+    {"Name": "Squirrel", "Emotion": "Neutral", "Text": "You never had any to begin with.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Nervous", "Text": "You are mean.", "Sound": "Normal"}, 
+]

@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/forest/assets/forest_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/DetectionArea2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/forest/forest.gd" type="Script" id=3]
+[ext_resource path="res://entities/npc/quest_man/QuestMan.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entities/item/QuestItem1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entities/enemy/GooseEnemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/npc/npc.tscn" type="PackedScene" id=7]
+[ext_resource path="res://entities/enemy/BasicEnemy.tscn" type="PackedScene" id=8]
 
 [node name="Forest" type="Node2D"]
 script = ExtResource( 3 )
@@ -209,5 +214,77 @@ position = Vector2( 13605, -705 )
 
 [node name="DefaultSpawn" type="Position2D" parent="."]
 position = Vector2( 4460, 35 )
+
+[node name="Adventurer" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2335, 541 )
+scale = Vector2( 4, 4 )
+wandering = false
+idle_animation = "AdventurerIdle"
+
+[node name="QuestItem1" parent="." instance=ExtResource( 5 )]
+position = Vector2( 4402, 46 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="GooseEnemy" parent="." instance=ExtResource( 6 )]
+position = Vector2( 4335, 34 )
+
+[node name="Npc" parent="." instance=ExtResource( 7 )]
+position = Vector2( 11299, 547 )
+scale = Vector2( 4, 4 )
+dialogue = "Farmer1.json"
+wandering = false
+idle_animation = "FarmerIdle"
+
+[node name="Npc2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2427, 2082 )
+scale = Vector2( 3, 3 )
+dialogue = "SnakeDialogue1.json"
+wandering = false
+idle_animation = "SnakeIdle"
+
+[node name="Npc3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 959, -163 )
+scale = Vector2( 5, 5 )
+dialogue = "Ghost1.json"
+idle_animation = "GhostIdle"
+
+[node name="Npc4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 4250, 550 )
+scale = Vector2( 4, 4 )
+dialogue = "CatDialogue2.json"
+idle_animation = "CatIdle"
+walk_animation = "CatWalk"
+
+[node name="BasicEnemy2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 673, -352 )
+
+[node name="BasicEnemy" parent="." instance=ExtResource( 8 )]
+position = Vector2( 352, -480 )
+
+[node name="Npc5" parent="." instance=ExtResource( 7 )]
+position = Vector2( 6643, -218 )
+scale = Vector2( 3.5, 3.5 )
+dialogue = "Squirrel1.json"
+wandering = false
+idle_animation = "SquirrelIdle"
+
+[node name="Npc6" parent="." instance=ExtResource( 7 )]
+position = Vector2( 7681, -1195 )
+scale = Vector2( 5, 5 )
+dialogue = "Moss1.json"
+wandering = false
+idle_animation = "MossIdle"
+
+[node name="BasicEnemy" parent="Npc6" instance=ExtResource( 8 )]
+position = Vector2( -93, -242.8 )
+
+[node name="GooseEnemy2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 10077, 402 )
+
+[node name="Npc7" parent="." instance=ExtResource( 7 )]
+position = Vector2( 3467, -2142 )
+scale = Vector2( 4, 4 )
+dialogue = "CrowDialogue2.json"
+wandering = false
 
 [connection signal="body_entered" from="SceneChangeMarkers/SceneChangePosMarker1/DetectionArea2D1" to="." method="_on_DetectionArea2D1_body_entered"]

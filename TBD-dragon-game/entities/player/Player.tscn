@@ -407,7 +407,7 @@ shape = SubResource( 14 )
 current = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.5, 4 )
+position = Vector2( -0.7, 3.429 )
 shape = SubResource( 12 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -454,7 +454,7 @@ _animation_player = NodePath("../../AnimationPlayer")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -0.5, 4 )
+position = Vector2( -0.7, 3.429 )
 shape = SubResource( 13 )
 
 [connection signal="body_entered" from="Sprites/Area2D_Attack" to="StateMachine/Claw_Atk" method="_on_Area2D_Attack_body_entered"]

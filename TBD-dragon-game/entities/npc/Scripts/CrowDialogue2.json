@@ -1,0 +1,6 @@
+[
+    {"Name": "Crow", "Emotion": "Surprise", "Text": "I hope my eyes aren't going out, but that is a massive rat in that tree.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Crow", "Emotion": "Neutral", "Text": "This land just gets stranger and stranger.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Pleased", "Text": "I bet your hearing is next to go!", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Crow", "Emotion": "Neutral", "Text": "Don't test my patience, weird pigeon.", "Sound": "Normal", "Position": "Right"},
+]

@@ -7,10 +7,10 @@
 [ext_resource path="res://entities/npc/ex_mark.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 16, 16 )
+extents = Vector2( 6.33333, 6.33333 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 45.5, 26 )
+extents = Vector2( 33.6667, 26 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
@@ -191,14 +191,9 @@ region = Rect2( 0, 96, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "talk",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "quest",
+"name": "exclaim",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -206,10 +201,15 @@ animations = [ {
 "name": "none",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "exclaim",
+"name": "quest",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "talk",
+"speed": 3.0
 } ]
 
 [node name="Npc" type="KinematicBody2D"]
@@ -217,25 +217,27 @@ scale = Vector2( 1.5, 1.5 )
 collision_layer = 8
 collision_mask = 8
 script = ExtResource( 2 )
-dialogue_path = "res://gui/DummyDialogue.json"
 
 [node name="NPCCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -0.1 )
 shape = SubResource( 5 )
 
 [node name="PlayerArea2D" type="Area2D" parent="."]
 
 [node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
-position = Vector2( -0.5, -10 )
+position = Vector2( -0.333332, -10 )
 shape = SubResource( 4 )
 
 [node name="NpcSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -1.33333 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-animation = "SnakeIdle"
+animation = "CatIdle"
 playing = true
 
 [node name="HoverSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -40 )
+position = Vector2( 0, -14.6667 )
+scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 3 )
 animation = "none"
 playing = true

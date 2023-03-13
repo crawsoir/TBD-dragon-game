@@ -1,0 +1,5 @@
+[
+    {"Name": "Ghost", "Emotion": "Neutral", "Text": "Welcome to the forest, kid. How can I help you?", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Happy", "Text": "I want to kidnap a princess and commit crimes!", "Sound": "Normal"},    
+    {"Name": "Ghost", "Emotion": "Frown", "Text": "Goodbye", "Sound": "Normal", "Position": "Right"}
+]
