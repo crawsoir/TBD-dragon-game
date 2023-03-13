@@ -1,0 +1,7 @@
+[
+    {"Name": "Cat", "Emotion": "Funny", "Text": "Surprised to see me?", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Annoyed1", "Text": "I'm warning you, back off.", "Sound": "Normal"},
+    {"Name": "Cat", "Emotion": "Amused", "Text": "Relax. I figured it would be funny to see you attempt your strange quest.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Cat", "Emotion": "Amused", "Text": "Heck, I'll help you right now by telling you that all geese in this forest are aggressive. But if you avoid their gaze, you can sink your teeth right into them!", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Annoyed2", "Text": "I'll keep that in mind.", "Sound": "Normal"}
+]

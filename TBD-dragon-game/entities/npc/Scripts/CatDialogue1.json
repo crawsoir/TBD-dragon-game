@@ -1,0 +1,11 @@
+[
+    {"Name": "Cat", "Emotion": "Neutral", "Text": "Hmm, freshly born, are ya?", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Annoyed1", "Text": "What's it to you?", "Sound": "Normal"},
+    {"Name": "Cat", "Emotion": "Amused", "Text": "You know, the world's a terribly dangerous place.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Cat", "Emotion": "Amused", "Text": "Take it from me, hotshot. I've certainly lived long enough to know it.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Cat", "Emotion": "Funny", "Text": "Always scrounging around for your next meal, eating any little drag- I mean, morsels that come along your way.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "AnnoyedHandsMouth", "Text": "Back off, beast. I've got claws and you'll find me very prickly.", "Sound": "Normal"},
+    {"Name": "Me", "Emotion": "Annoyed2", "Text": "Besides, I'm too important to be eaten by the likes of you.", "Sound": "Normal"},
+    {"Name": "Me", "Emotion": "Happy", "Text": "I'm a ruthless terrifying dragon! And I am going to kidnap the princess of this land!", "Sound": "Normal"},
+    {"Name": "Cat", "Emotion": "Neutral", "Text": "Arrogant little creature. Off you go, then.", "Sound": "Normal", "Position": "Right"}
+]

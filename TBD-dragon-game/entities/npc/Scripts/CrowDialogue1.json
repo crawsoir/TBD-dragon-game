@@ -1,0 +1,5 @@
+[
+    {"Name": "Crow", "Emotion": "Neutral", "Text": "What a strange new land this is. Hail, traveller.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Happy", "Text": "I'm gonna hoard so much gold that my eyes will explode from the sight of it.", "Sound": "Normal"},
+    {"Name": "Crow", "Emotion": "Surprise", "Text": "Even the inhabitants are crazy!", "Sound": "Normal"}
+]

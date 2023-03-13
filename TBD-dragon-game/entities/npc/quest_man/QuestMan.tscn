@@ -5,11 +5,11 @@
 
 [node name="Npc" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-dialogue_path = ""
 
 [node name="NPCCollisionShape2D" parent="." index="0"]
-position = Vector2( 0, -4.33333 )
+position = Vector2( 0, -1.5 )
 
 [node name="NpcSprite" parent="." index="2"]
+position = Vector2( 0, -2.66667 )
 animation = "AdventurerIdle"
-frame = 12
+frame = 1

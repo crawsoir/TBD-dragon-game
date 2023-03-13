@@ -9,7 +9,7 @@ enum {
 
 var state = IDLE
 var gravity = 10
-var speed = 0.1
+var speed = 0.01
 var health = 4
 var velocity = Vector2(0, 0)
 var accel = Vector2(0, 0)
@@ -57,9 +57,9 @@ func _process(delta):
 			$AnimationPlayer.current_animation = "Attack"
 			accel = (target.position - position).normalized()
 			if target.position.distance_to(position) > 200:
-				velocity = accel*speed*25
+				velocity = accel*speed*50
 			else:
-				velocity += accel*speed
+				velocity += accel*speed*0.5
 			position += velocity
 
 

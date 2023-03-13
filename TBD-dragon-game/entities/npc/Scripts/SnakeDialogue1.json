@@ -1,5 +1,8 @@
 [
-    {"Name": "Snake", "Emotion": "Neutral", "Text": "hello world", "Sound": "Normal", "Position": "Right"},
-    {"Name": "Me", "Emotion": "Happy", "Text": "here are some words words words words words words words words words words words wordswords words words wordswords", "Sound": "Normal", "Position": "Right"},
-    {"Name": "Me", "Emotion": "AngryFire", "Text": "whoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Sound": "Normal"}
+    {"Name": "Snake", "Emotion": "Happy", "Text": "Ssssssalutations, friend!", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "LookBackAnnoyed", "Text": "Let me guess, you want to eat me?", "Sound": "Normal"},
+    {"Name": "Snake", "Emotion": "Neutral", "Text": "Heavens no! who do you take me for?", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "LookBackAnnoyed", "Text": "... A snake? ", "Sound": "Normal"},
+    {"Name": "Snake", "Emotion": "Pleased", "Text": "I have standards. I don't just go eating whatever person I see. I'd ask you to respect that, please.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Annoyed1", "Text": "Aight.", "Sound": "Normal"}
 ]

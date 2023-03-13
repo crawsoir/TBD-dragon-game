@@ -1,0 +1,7 @@
+[
+    {"Name": "Me", "Emotion": "Neutral", "Text": "What a big piece of moss stuck on this tree!", "Sound": "Normal"},    
+    {"Name": "Moss", "Emotion": "Angry", "Text": "I RESENT THAT.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Moss", "Emotion": "Angry", "Text": "I'LL HAVE YOU KNOW, I'M NOT STUCK TO THIS TREE. THIS TREE IS STUCK TO ME.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Pleased", "Text": "Of course!", "Sound": "Normal"},
+    {"Name": "Moss", "Emotion": "Neutral", "Text": "i'm glad you understand.", "Sound": "Normal", "Position": "Right"},
+]

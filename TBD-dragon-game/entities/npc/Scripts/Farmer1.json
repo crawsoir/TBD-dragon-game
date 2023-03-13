@@ -1,0 +1,9 @@
+[
+    {"Name": "Farmer", "Emotion": "Neutral", "Text": "Great. I'm lost again.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Farmer", "Emotion": "Neutral", "Text": "*Sigh*, I hate this stupid forest. Why did I have to be assigned here?", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Farmer", "Emotion": "NeutralEyes", "Text": "A stray dog?", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Farmer", "Emotion": "Smile", "Text": "Look at how much meat you've got on you. Healthy and well-fed. Unlike me.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Farmer", "Emotion": "Strange", "Text": "Nothing to worry about. No taxes to pay. No King to please. And so much meat on those bones.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Farmer", "Emotion": "Scary", "Text": "Wanna come a bit closer?", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Shock", "Text": "EEEE get away from me", "Sound": "Normal"}
+]
