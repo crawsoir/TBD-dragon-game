@@ -32,10 +32,15 @@ var quest_progress = {
 		"Status": NEW_QUEST, # NEW, IPR, DONE,
 		"Items": {"QUESTITEM1": 1},
 		"Rewards": {"APPLE": 3}
+	},
+	"gate_quest": {
+		"Status": NEW_QUEST, # NEW, IPR, DONE,
+		"Items": {"gate_key": 1},
+		"Rewards": {"APPLE": 3}
 	}
 }
 
-var spawnable = {"QUESTITEM1": true} # Maybe add respawn timers idk
+var spawnable = {"QUESTITEM1": true, "gate_key": true} # Maybe add respawn timers idk
 # It's hacky but we'll track player items here briefly when transitioning
 # in order to generate certain items properly
 

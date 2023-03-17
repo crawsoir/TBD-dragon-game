@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 var speed = 400
 var jump_impulse = 800
-var gravity = 1400
+var gravity = 1200
 
 #var dash_unlocked = true
 var dash_speed = 1000
