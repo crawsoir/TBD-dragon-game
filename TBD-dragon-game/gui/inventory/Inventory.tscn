@@ -57,5 +57,6 @@ text = "Use
 "
 align = 1
 
+[connection signal="gui_input" from="TextureRect" to="." method="_on_TextureRect_gui_input"]
 [connection signal="pressed" from="ThrowButton" to="." method="_on_ThrowButton_pressed"]
 [connection signal="pressed" from="UseButton" to="." method="_on_UseButton_pressed"]

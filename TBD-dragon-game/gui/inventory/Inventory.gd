@@ -10,6 +10,7 @@ var max_inv_size
 var slot_list = [] # Store node references here
 const SLOT = preload("res://gui/inventory/Slot.tscn")
 var left_selected_index = null
+var holding = false
 
 func _ready():
 	# Player value should be set already here
@@ -114,6 +115,7 @@ func _on_right_clicked(mouse_global_position, slot_bag_index : String):
 	print("Right clicked signal emitted for inventory for " + slot_bag_index)
 
 func close_inventory():
+	self.player.is_inv_open = false
 	self.queue_free()
 
 
@@ -134,3 +136,13 @@ func _on_UseButton_pressed():
 		left_selected_index = null
 		$ThrowButton.hide()
 		$UseButton.hide()
+
+func _on_TextureRect_gui_input(event):
+	if event is InputEventMouseMotion && holding:
+		self.offset = self.offset + event.relative
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT && event.pressed:
+			holding = true
+		elif event.button_index == BUTTON_LEFT && !event.pressed:
+			holding = false
+
