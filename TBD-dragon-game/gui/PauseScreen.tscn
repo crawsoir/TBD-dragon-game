@@ -20,6 +20,7 @@ font_data = ExtResource( 1 )
 font_data = ExtResource( 1 )
 
 [node name="PauseScreen" type="CanvasLayer"]
+layer = 13
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -46,9 +47,6 @@ margin_top = -74.0
 margin_right = 741.0
 margin_bottom = -32.0
 custom_constants/separation = 60
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Resume" type="Button" parent="HBoxContainer"]
 margin_right = 88.0
