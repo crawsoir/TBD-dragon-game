@@ -1,0 +1,1291 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://entities/enemy/rat_boss.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=8]
+resource_name = "DownAttack"
+length = 2.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("HeadSprite/Fire1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 6, 7, 8, 6, 7, 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HeadSprite/Fire2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 6, 7, 8, 6, 7, 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HeadSprite/Fire3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 6, 7, 8, 6, 7, 8 ]
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("HeadSprite:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("HeadSprite:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.8, -0.0179834, -39.2139, -0.6, -2.00938, 0, 76.3813, 0, -0.4, 63.7953, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.8, 2.7 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("HeadSprite/Fire1:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("HeadSprite/Fire1:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( -44, -0.25, 0, 0, 0.179619, -45.392, -0.3, -23.1552, 0.2, 23.5008, 104.253, -0.0999999, -77.76, 0.4, -20.736, -44, 0, 70.4928, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.6, 2.1, 2.7 )
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("HeadSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("HeadSprite/Fire1:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.2, 3.90085, 0, -0.1, 4.13342, 0.1, -4.47159, 0, -0.1, -4.70416, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("HeadSprite/Fire1:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -44, -0.25, 0, 0.25, 0, -44, -0.25, 0, 0.25, 0, -38.5885, -0.25, 0, 0.25, 0, -44, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.00529838, 0.5, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("HeadSprite/Fire3:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( -27, -0.25, 0, 0.1, 1.53566, -27, -0.1, 1.80483, 0.1, -1.55986, -27, -0.1, -1.69445, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("HeadSprite/Fire3:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -13, -0.25, 0, 0.3, 6.91632, -13, -0.3, -2.9086, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("HeadSprite/Fire2:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 27, -0.25, 0, 0.2, -4.10684, 27, -0.2, -5.07135, 0.2, 5.05597, 27, -0.1, 5.05597, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("HeadSprite/Fire2:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( -13, -0.25, 0, 0.3, -7.99186, -13, -0.3, 0.68869, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("HeadSprite/Fire1:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 6, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 8, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.7 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("HeadSprite/Fire2:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 6, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 8, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.7 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("HeadSprite/Fire3:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 6, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 8, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.7 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("HeadSprite:position:x")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("HeadSprite:position:y")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.2, 4.56754, 0, -0.2, -5.07751, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("HeadSprite/Fire4:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("HeadSprite/Fire5:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("HeadSprite/Fire1/Area2D/CollisionShape2D:disabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("HeadSprite/Fire2/Area2D/CollisionShape2D:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("HeadSprite/Fire3/Area2D/CollisionShape2D:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("HeadSprite/Area2D/CollisionShape2D:disabled")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "PhaseTwoIdle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("HeadSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("HeadSprite:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.4, 6.28703, -1.65905, -0.3, 2.13187, 0.1, 2.13187, 0, -0.5, 2.21709, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("HeadSprite:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.3, 2.21709, 0.279021, -0.2, -1.93807, 0.2, 2.32568, 0, -0.2, -1.65905, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HeadSprite/Fire5/Area2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HeadSprite/Fire4/Area2D/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("HeadSprite/Fire1:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("HeadSprite/Fire2:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("HeadSprite/Fire3:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("HeadSprite/Fire4:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("HeadSprite/Fire5:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11 ]
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("HeadSprite/Fire1:position:x")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.4, -11.3081, 0, -0.3, 7.87871, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("HeadSprite/Fire1:position:y")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( -44, -0.25, 0, 0.3, 6.67325, -44, -0.4, -7.91008, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("HeadSprite/Fire2:position:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( 27, -0.25, 0, 0.4, -10.1601, 27, -0.4, 8.58987, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("HeadSprite/Fire2:position:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( -13, -0.25, 0, 0.4, -9.74343, -13, -0.4, 11.7843, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("HeadSprite/Fire3:position:x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( -27, -0.25, 0, 0.4, 16.0621, -27, -0.2, -8.93786, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("HeadSprite/Fire3:position:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( -13, -0.25, 0, 0.4, 9.00656, -13, -0.2, -5.57676, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.9 )
+}
+tracks/16/type = "bezier"
+tracks/16/path = NodePath("HeadSprite/Fire4:position:x")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"points": PoolRealArray( 54, -0.25, 0, 0.5, -23.9657, 54, -0.5, 7.2843, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/17/type = "bezier"
+tracks/17/path = NodePath("HeadSprite/Fire4:position:y")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"points": PoolRealArray( -62, -0.25, 0, 0.3, -5.88229, -63, -0.2, 9.70103, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/18/type = "bezier"
+tracks/18/path = NodePath("HeadSprite/Fire5:position:x")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"points": PoolRealArray( -54, -0.25, 0, 0.4, 14.5899, -54, -0.2, -11.1045, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/19/type = "bezier"
+tracks/19/path = NodePath("HeadSprite/Fire5:position:y")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"points": PoolRealArray( -62, -0.25, 0, 0.3, -10.7434, -63, -0.1, 9.70103, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("HeadSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HeadSprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HeadSprite/Fire1:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HeadSprite/Fire2:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HeadSprite/Fire3:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("HeadSprite/Fire1:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("HeadSprite/Fire1:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( -44, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("HeadSprite/Fire3:position:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( -27, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("HeadSprite/Fire3:position:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( -13, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("HeadSprite/Fire2:position:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 27, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("HeadSprite/Fire2:position:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( -13, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("HeadSprite/Fire1:frame")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("HeadSprite/Fire2:frame")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("HeadSprite/Fire3:frame")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("HeadSprite:position:x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("HeadSprite:position:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("HeadSprite/Fire5:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 0, 0 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("HeadSprite/Fire4:self_modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("HeadSprite/Fire4:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("HeadSprite/Fire5:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("HeadSprite/Fire1/Area2D/CollisionShape2D:disabled")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("HeadSprite/Fire2/Area2D/CollisionShape2D:disabled")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("HeadSprite/Fire3/Area2D/CollisionShape2D:disabled")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("HeadSprite/Area2D/CollisionShape2D:disabled")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("HeadSprite/Fire4/Area2D/CollisionShape2D:disabled")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("HeadSprite/Fire5/Area2D/CollisionShape2D:disabled")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("HeadSprite/Fire4:frame")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 9 ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("HeadSprite/Fire5:frame")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 9 ]
+}
+tracks/28/type = "bezier"
+tracks/28/path = NodePath("HeadSprite/Fire4:position:x")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"points": PoolRealArray( 54, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/29/type = "bezier"
+tracks/29/path = NodePath("HeadSprite/Fire4:position:y")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"points": PoolRealArray( -62, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/30/type = "bezier"
+tracks/30/path = NodePath("HeadSprite/Fire5:position:x")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"points": PoolRealArray( -54, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/31/type = "bezier"
+tracks/31/path = NodePath("HeadSprite/Fire5:position:y")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"points": PoolRealArray( -62, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/32/type = "bezier"
+tracks/32/path = NodePath(".:position:x")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/33/type = "bezier"
+tracks/33/path = NodePath(".:position:y")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Spawning"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("HeadSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HeadSprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HeadSprite/Fire1:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.9, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HeadSprite/Fire2:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.3, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HeadSprite/Fire3:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.3, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("HeadSprite/Fire5:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("HeadSprite/Fire4:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("HeadSprite/Fire1:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("HeadSprite/Fire2:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("HeadSprite/Fire3:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("HeadSprite/Fire1/Area2D/CollisionShape2D:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("HeadSprite/Fire2/Area2D/CollisionShape2D:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("HeadSprite/Fire3/Area2D/CollisionShape2D:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("HeadSprite/Area2D/CollisionShape2D:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Transform"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HeadSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HeadSprite/Fire3:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 9 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HeadSprite/Fire1:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 9 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HeadSprite/Fire2:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 9 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HeadSprite/Fire5:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 0, 0 ), Color( 1, 1, 0, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("HeadSprite/Fire4:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4, 0.999967 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 0, 0 ), Color( 1, 1, 0, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("HeadSprite/Fire4:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("HeadSprite/Fire5:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("HeadSprite/Fire4/Area2D/CollisionShape2D:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("HeadSprite/Fire5/Area2D/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 13.0
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 22.0
+height = 4.66667
+
+[sub_resource type="CapsuleShape2D" id=9]
+
+[node name="Boss" type="KinematicBody2D"]
+scale = Vector2( 3, 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/DownAttack = SubResource( 8 )
+anims/Idle = SubResource( 1 )
+anims/PhaseTwoIdle = SubResource( 5 )
+anims/RESET = SubResource( 3 )
+anims/Spawning = SubResource( 4 )
+anims/Transform = SubResource( 2 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="HeadSprite" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 1 )
+hframes = 3
+vframes = 5
+frame = 2
+
+[node name="Fire1" type="Sprite" parent="HeadSprite"]
+show_behind_parent = true
+position = Vector2( 0, -44 )
+texture = ExtResource( 1 )
+hframes = 3
+vframes = 5
+
+[node name="Area2D" type="Area2D" parent="HeadSprite/Fire1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadSprite/Fire1/Area2D"]
+position = Vector2( 0, 10 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="Fire2" type="Sprite" parent="HeadSprite"]
+self_modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = true
+position = Vector2( 27, -13 )
+texture = ExtResource( 1 )
+hframes = 3
+vframes = 5
+
+[node name="Area2D" type="Area2D" parent="HeadSprite/Fire2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadSprite/Fire2/Area2D"]
+position = Vector2( 0, 10 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="Fire3" type="Sprite" parent="HeadSprite"]
+self_modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = true
+position = Vector2( -27, -13 )
+texture = ExtResource( 1 )
+hframes = 3
+vframes = 5
+
+[node name="Area2D" type="Area2D" parent="HeadSprite/Fire3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadSprite/Fire3/Area2D"]
+position = Vector2( 0, 10 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="Fire4" type="Sprite" parent="HeadSprite"]
+visible = false
+show_behind_parent = true
+position = Vector2( 54, -62 )
+texture = ExtResource( 1 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="Area2D" type="Area2D" parent="HeadSprite/Fire4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadSprite/Fire4/Area2D"]
+position = Vector2( 0, 10 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="Fire5" type="Sprite" parent="HeadSprite"]
+visible = false
+self_modulate = Color( 1, 1, 0, 0 )
+show_behind_parent = true
+position = Vector2( -54, -62 )
+texture = ExtResource( 1 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="Area2D" type="Area2D" parent="HeadSprite/Fire5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadSprite/Fire5/Area2D"]
+position = Vector2( 0, 10 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="HeadSprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadSprite/Area2D"]
+position = Vector2( 0, -7 )
+shape = SubResource( 7 )
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 9 )

@@ -1,7 +1,0 @@
-[gd_scene format=2]
-
-[node name="Boss" type="KinematicBody2D"]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
