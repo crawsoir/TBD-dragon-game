@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://gui/health-bar/HealthBar.gd" type="Script" id=1]
+
+[node name="HealthBar" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="HeartsGrid" type="GridContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 40.0
+columns = 30
+__meta__ = {
+"_editor_description_": "Columns should equal max possible health."
+}
