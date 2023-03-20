@@ -24,7 +24,6 @@ tile_data = PoolIntArray( 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 
 
 [node name="Npc" parent="." instance=ExtResource( 3 )]
 position = Vector2( 683, 356 )
-scale = Vector2( 1.5, 1.5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 300, 350 )

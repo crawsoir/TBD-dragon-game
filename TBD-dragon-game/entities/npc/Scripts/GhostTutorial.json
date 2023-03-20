@@ -1,0 +1,16 @@
+[
+    {"Name": "Ghost", "Emotion": "Frown", "Text": "Life is really hard. You gotta know a lot of stuff to get ahead in this world.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Ghost", "Emotion": "Frown", "Text": "For example, you gotta know that pressing the left arrow makes you move left, and the right arrow key makes you go right.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Ghost", "Emotion": "Frown", "Text": "You can also press the Z key to jump.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Ghost", "Emotion": "Frown", "Text": "You press the spacebar to interact with folks and talk to them.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Ghost", "Emotion": "Frown", "Text": "You can muster up some kind of funny action that damages whoever is in front of you if you press X, but only if god said they could die.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "NeutralHandsMouth", "Text": "What if I want gold?", "Sound": "Normal"},
+    {"Name": "Ghost", "Emotion": "Frown", "Text": "If you want to have a lot of stuff in life, you gotta remember to press the V key to pick stuff up!", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Ghost", "Emotion": "Frown", "Text": "And then you can press the B key to look at all your stuff. Not just gold of course. Try clicking on items in your inventory when you get something.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Ghost", "Emotion": "Frown", "Text": "Some people also seem to find the will to sprint faster when they press the C key...", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Neutral", "Text": "Umm... thanks for all that information I guess?", "Sound": "Normal"},
+    {"Name": "Ghost", "Emotion": "Frown", "Text": "Hmmm... none of this knowledge works if you're using a controller though. I don't remember the controls for that at all...", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Ghost", "Emotion": "Neutral", "Text": "Thankfully, I'm dead so I don't need to really remember that.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Annoyed2", "Text": "I'm leaving...", "Sound": "Normal"},
+    {"Name": "Ghost", "Emotion": "Neutral", "Text": "Bye!", "Sound": "Normal", "Position": "Right"}
+]
