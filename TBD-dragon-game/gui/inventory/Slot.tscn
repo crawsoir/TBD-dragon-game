@@ -1,9 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://gui/inventory/assets/slot.png" type="Texture" id=1]
+[ext_resource path="res://fonts/DTNouveau-Regular.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://gui/inventory/Slot.gd" type="Script" id=3]
 
 [sub_resource type="StyleBoxTexture" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 2 )
 
 [node name="Slot" type="Control"]
 anchor_right = 1.0
@@ -23,6 +28,13 @@ expand = true
 margin_right = 32.0
 margin_bottom = 32.0
 custom_styles/panel = SubResource( 1 )
+
+[node name="Amount" type="Label" parent="."]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 31.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 2 )
 
 [connection signal="gui_input" from="." to="." method="_on_Slot_gui_input"]
 [connection signal="gui_input" from="TextureRect" to="." method="_on_TextureRect_gui_input"]
