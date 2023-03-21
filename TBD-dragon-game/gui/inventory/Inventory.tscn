@@ -1,7 +1,30 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://gui/inventory/Inventory.gd" type="Script" id=1]
+[ext_resource path="res://gui/inventory/assets/CloseButton.png" type="Texture" id=2]
 [ext_resource path="res://gui/inventory/assets/inventory.png" type="Texture" id=3]
+[ext_resource path="res://gui/inventory/assets/DetailsRect.png" type="Texture" id=4]
+[ext_resource path="res://fonts/DTNouveau-Regular.otf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 10
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 10
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 10
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 10
+font_data = ExtResource( 5 )
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -57,5 +80,43 @@ text = "Use
 "
 align = 1
 
+[node name="CloseButton" type="TextureButton" parent="."]
+margin_left = 468.0
+margin_top = 115.0
+margin_right = 489.0
+margin_bottom = 135.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 2 )
+texture_disabled = ExtResource( 2 )
+texture_focused = ExtResource( 2 )
+expand = true
+stretch_mode = 4
+
+[node name="DetailsWindow" type="TextureRect" parent="."]
+visible = false
+margin_left = 523.0
+margin_top = 109.0
+margin_right = 630.0
+margin_bottom = 301.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+
+[node name="Description" type="RichTextLabel" parent="DetailsWindow"]
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 103.0
+margin_bottom = 188.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/mono_font = SubResource( 2 )
+custom_fonts/bold_italics_font = SubResource( 3 )
+custom_fonts/italics_font = SubResource( 4 )
+custom_fonts/bold_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 6 )
+text = "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
+
+[connection signal="gui_input" from="TextureRect" to="." method="_on_TextureRect_gui_input"]
 [connection signal="pressed" from="ThrowButton" to="." method="_on_ThrowButton_pressed"]
 [connection signal="pressed" from="UseButton" to="." method="_on_UseButton_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_CloseButton_pressed"]
