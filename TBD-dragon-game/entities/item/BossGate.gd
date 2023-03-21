@@ -14,7 +14,12 @@ func _ready():
 	$Prompt.visible = false
 	$Locked_Prompt/CollisionShape2D.disabled = false
 	$AnimationPlayer.current_animation = "closed"
-	
+	if Global.quest_progress["gate_quest"]["Status"] == Global.DONE_QUEST:
+		$AnimationPlayer.current_animation = "open"
+		state = OPEN
+	else:
+		$AnimationPlayer.current_animation = "closed"
+			
 func _process(delta):
 	match state:
 		OPEN:
@@ -43,6 +48,7 @@ func _on_Locked_Prompt_body_entered(body):
 		player = body
 		$Prompt.visible = true
 		player_in_range = true
+		
 		if body.has_item("gate_key"):
 			$Prompt.animation = "exclaim"
 			has_key = true

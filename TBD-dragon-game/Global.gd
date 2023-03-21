@@ -36,7 +36,7 @@ var quest_progress = {
 	"gate_quest": {
 		"Status": NEW_QUEST, # NEW, IPR, DONE,
 		"Items": {"gate_key": 1},
-		"Rewards": {"APPLE": 3}
+		"Rewards": {"APPLE": 1}
 	}
 }
 

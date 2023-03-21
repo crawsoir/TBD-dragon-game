@@ -1,0 +1,6 @@
+[
+    {"Name": "Me", "Emotion": "Neutral", "Text": "I got the key. What now?", "Sound": "Normal"},
+    {"Name": "Rat", "Emotion": "Neutral", "Text": "Now you have to find him!", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Rat", "Emotion": "Neutral", "Text": "Remember. \n\t\"Atop the tree, leftmost of three. \n\tThere you'll find, an underground key.\"", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "AnnoyedHandsMouth", "Text": "Ok.", "Sound": "Normal"}
+]

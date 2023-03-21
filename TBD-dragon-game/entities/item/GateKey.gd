@@ -8,7 +8,6 @@ func _ready():
 	sprite_path = "res://entities/item/assets/key.png"
 	item_name = "gate_key"
 	# Free self if necessary
-	print(Global.quest_progress)
 	var relevant_quest = Global.quest_progress["gate_quest"]
 	if not Global.spawnable[item_name]:
 			self.queue_free()
@@ -16,3 +15,4 @@ func _ready():
 
 func on_successful_pickup():
 	Global.spawnable[item_name] = false
+	Global.quest_progress["gate_quest"]["Status"] = Global.IPR_QUEST

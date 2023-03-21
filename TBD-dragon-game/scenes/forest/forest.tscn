@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/forest/assets/forest_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/DetectionArea2D.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://entities/enemy/BasicEnemy.tscn" type="PackedScene" id=8]
 [ext_resource path="res://entities/item/BossGate.tscn" type="PackedScene" id=9]
 [ext_resource path="res://entities/item/GateKey.tscn" type="PackedScene" id=10]
+[ext_resource path="res://entities/npc/rat_npc.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 224.5, 77.5 )
@@ -230,7 +231,7 @@ position = Vector2( 4402, 46 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="QuestItem2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1692, 2081 )
+position = Vector2( 9801, -3234 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -308,7 +309,7 @@ wandering = false
 [node name="Npc8" parent="NPCs" instance=ExtResource( 7 )]
 position = Vector2( 5501, -902 )
 scale = Vector2( 10, 10 )
-dialogue = "Rat1.json"
+script = ExtResource( 11 )
 wandering = false
 idle_animation = "RatIdle"
 

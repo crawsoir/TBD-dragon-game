@@ -1,10 +1,13 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://entities/enemy/rat_boss.png" type="Texture" id=1]
 [ext_resource path="res://entities/enemy/RatBoss.gd" type="Script" id=2]
 
 [sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Defeated"
+
+[sub_resource type="AnimationNodeAnimation" id=37]
+animation = "Defeated_Anim_Finished"
 
 [sub_resource type="AnimationNodeAnimation" id=12]
 animation = "DownAttack"
@@ -31,18 +34,26 @@ animation = "Spawning"
 animation = "Transform"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
@@ -51,12 +62,26 @@ animation = "Transform"
 [sub_resource type="AnimationNodeStateMachineTransition" id=33]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=34]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=35]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
 
 [sub_resource type="AnimationNodeStateMachine" id=26]
 states/Defeated/node = SubResource( 11 )
 states/Defeated/position = Vector2( 897.818, 80.4375 )
+states/Defeated_Anim_Finished/node = SubResource( 37 )
+states/Defeated_Anim_Finished/position = Vector2( 1120, 78.2436 )
 states/DownAttack/node = SubResource( 12 )
 states/DownAttack/position = Vector2( 342.875, 193.5 )
 states/Idle/node = SubResource( 13 )
@@ -73,8 +98,8 @@ states/Spawning/node = SubResource( 16 )
 states/Spawning/position = Vector2( 152.5, 80.6563 )
 states/Transform/node = SubResource( 17 )
 states/Transform/position = Vector2( 508, 81.4254 )
-transitions = [ "Spawning", "Idle", SubResource( 18 ), "Idle", "DownAttack", SubResource( 19 ), "DownAttack", "Idle", SubResource( 20 ), "Idle", "RotateAttack", SubResource( 21 ), "RotateAttack", "Idle", SubResource( 22 ), "Idle", "Transform", SubResource( 23 ), "Transform", "PhaseTwoIdle", SubResource( 24 ), "PhaseTwoIdle", "Defeated", SubResource( 25 ), "PhaseTwoIdle", "PhaseTwoDownAttack", SubResource( 32 ), "PhaseTwoIdle", "PhaseTwoRotateAttack", SubResource( 33 ), "PhaseTwoRotateAttack", "PhaseTwoIdle", SubResource( 34 ), "PhaseTwoDownAttack", "PhaseTwoIdle", SubResource( 35 ) ]
-graph_offset = Vector2( 113.748, -162.57 )
+transitions = [ "Spawning", "Idle", SubResource( 18 ), "Idle", "DownAttack", SubResource( 19 ), "DownAttack", "Idle", SubResource( 20 ), "Idle", "RotateAttack", SubResource( 21 ), "RotateAttack", "Idle", SubResource( 22 ), "Idle", "Transform", SubResource( 23 ), "Transform", "PhaseTwoIdle", SubResource( 24 ), "PhaseTwoIdle", "Defeated", SubResource( 25 ), "PhaseTwoIdle", "PhaseTwoDownAttack", SubResource( 32 ), "PhaseTwoIdle", "PhaseTwoRotateAttack", SubResource( 33 ), "PhaseTwoRotateAttack", "PhaseTwoIdle", SubResource( 34 ), "PhaseTwoDownAttack", "PhaseTwoIdle", SubResource( 35 ), "Defeated", "Defeated_Anim_Finished", SubResource( 38 ), "PhaseTwoRotateAttack", "Defeated", SubResource( 42 ), "PhaseTwoDownAttack", "Defeated", SubResource( 43 ) ]
+graph_offset = Vector2( 5.00449, -30.0561 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=27]
 
@@ -242,7 +267,7 @@ tracks/15/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("HeadSprite/Hitbox/CollisionShape2D:disabled")
+tracks/16/path = NodePath("Hitbox:disabled")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -254,7 +279,7 @@ tracks/16/keys = {
 "values": [ true ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("DamageCollision:disabled")
+tracks/17/path = NodePath("BodyCollision/DamageCollision:disabled")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -266,7 +291,7 @@ tracks/17/keys = {
 "values": [ false ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("DamageCollision:visible")
+tracks/18/path = NodePath("BodyCollision/DamageCollision:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -349,6 +374,21 @@ tracks/24/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/25/type = "value"
+tracks/25/path = NodePath("HeadSprite/Fire:rotation_degrees")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=39]
+resource_name = "Defeated_Anim_Finished"
 
 [sub_resource type="Animation" id=8]
 resource_name = "DownAttack"
@@ -546,57 +586,63 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 tracks/7/type = "bezier"
-tracks/7/path = NodePath("HeadSprite/Fire/Fire1:frame")
+tracks/7/path = NodePath("HeadSprite:position:x")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"points": PoolRealArray( 6, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 8, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.3, 0.7 )
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
 }
 tracks/8/type = "bezier"
-tracks/8/path = NodePath("HeadSprite/Fire/Fire2:frame")
+tracks/8/path = NodePath("HeadSprite:position:y")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"points": PoolRealArray( 6, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 8, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.3, 0.7 )
+"points": PoolRealArray( 0, -0.25, 0, 0.2, 4.56754, 0, -0.2, -5.07751, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
 }
-tracks/9/type = "bezier"
-tracks/9/path = NodePath("HeadSprite/Fire/Fire3:frame")
+tracks/9/type = "value"
+tracks/9/path = NodePath("HeadSprite/Fire/Fire4:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"points": PoolRealArray( 6, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 8, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.3, 0.7 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
-tracks/10/type = "bezier"
-tracks/10/path = NodePath("HeadSprite:position:x")
+tracks/10/type = "value"
+tracks/10/path = NodePath("HeadSprite/Fire/Fire5:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
-tracks/11/type = "bezier"
-tracks/11/path = NodePath("HeadSprite:position:y")
+tracks/11/type = "value"
+tracks/11/path = NodePath("HeadSprite/Fire/Fire1/Area2D/CollisionShape2D:disabled")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.2, 4.56754, 0, -0.2, -5.07751, 0.25, 0 ),
-"times": PoolRealArray( 0, 1 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("HeadSprite/Fire/Fire4:visible")
+tracks/12/path = NodePath("HeadSprite/Fire/Fire2/Area2D/CollisionShape2D:disabled")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -608,7 +654,7 @@ tracks/12/keys = {
 "values": [ false ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("HeadSprite/Fire/Fire5:visible")
+tracks/13/path = NodePath("HeadSprite/Fire/Fire3/Area2D/CollisionShape2D:disabled")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -620,7 +666,7 @@ tracks/13/keys = {
 "values": [ false ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("HeadSprite/Fire/Fire1/Area2D/CollisionShape2D:disabled")
+tracks/14/path = NodePath("Hitbox:disabled")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -632,40 +678,40 @@ tracks/14/keys = {
 "values": [ false ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("HeadSprite/Fire/Fire2/Area2D/CollisionShape2D:disabled")
+tracks/15/path = NodePath("HeadSprite/Fire/Fire1:frame")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ 6, 7, 8 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("HeadSprite/Fire/Fire3/Area2D/CollisionShape2D:disabled")
+tracks/16/path = NodePath("HeadSprite/Fire/Fire2:frame")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ 6, 7, 8 ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("HeadSprite/Hitbox/CollisionShape2D:disabled")
+tracks/17/path = NodePath("HeadSprite/Fire/Fire3:frame")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ 6, 7, 8 ]
 }
 
 [sub_resource type="Animation" id=29]
@@ -1515,7 +1561,7 @@ tracks/22/keys = {
 "values": [ true ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("HeadSprite/Hitbox/CollisionShape2D:disabled")
+tracks/23/path = NodePath("Hitbox:disabled")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -1657,7 +1703,7 @@ tracks/35/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/36/type = "value"
-tracks/36/path = NodePath("DamageCollision:disabled")
+tracks/36/path = NodePath("BodyCollision/DamageCollision:disabled")
 tracks/36/interp = 1
 tracks/36/loop_wrap = true
 tracks/36/imported = false
@@ -1749,7 +1795,7 @@ tracks/44/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/45/type = "value"
-tracks/45/path = NodePath("DamageCollision:visible")
+tracks/45/path = NodePath("BodyCollision/DamageCollision:visible")
 tracks/45/interp = 1
 tracks/45/loop_wrap = true
 tracks/45/imported = false
@@ -2065,7 +2111,7 @@ tracks/12/keys = {
 "values": [ true ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("HeadSprite/Hitbox/CollisionShape2D:disabled")
+tracks/13/path = NodePath("Hitbox:disabled")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -2077,7 +2123,7 @@ tracks/13/keys = {
 "values": [ true ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("DamageCollision:disabled")
+tracks/14/path = NodePath("BodyCollision/DamageCollision:disabled")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -2227,18 +2273,18 @@ tracks/9/keys = {
 [sub_resource type="CircleShape2D" id=6]
 radius = 13.0
 
-[sub_resource type="CapsuleShape2D" id=7]
-radius = 22.0
-height = 4.66667
-
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 17.0
 height = 8.66667
 
-[node name="Boss" type="KinematicBody2D"]
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 22.0
+height = 4.66667
+
+[node name="Boss" type="KinematicBody2D" groups=["Enemy"]]
 scale = Vector2( 3, 3 )
-collision_layer = 64
-collision_mask = 64
+collision_layer = 16
+collision_mask = 32
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_vertical_guides_": [ -631.0 ]
@@ -2247,10 +2293,12 @@ __meta__ = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 26 )
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource( 27 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Defeated = SubResource( 28 )
+anims/Defeated_Anim_Finished = SubResource( 39 )
 anims/DownAttack = SubResource( 8 )
 anims/Idle = SubResource( 1 )
 anims/PhaseTwoDownAttack = SubResource( 29 )
@@ -2270,6 +2318,7 @@ frame = 2
 
 [node name="Fire" type="Node2D" parent="HeadSprite"]
 show_behind_parent = true
+scale = Vector2( 0.9, 0.9 )
 
 [node name="Fire1" type="Sprite" parent="HeadSprite/Fire"]
 show_behind_parent = true
@@ -2358,17 +2407,24 @@ position = Vector2( 0, 10 )
 shape = SubResource( 6 )
 disabled = true
 
-[node name="Hitbox" type="Area2D" parent="HeadSprite"]
-collision_layer = 32
-collision_mask = 32
+[node name="BodyCollision" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadSprite/Hitbox"]
-position = Vector2( 0, -7 )
-shape = SubResource( 7 )
-disabled = true
-
-[node name="DamageCollision" type="CollisionShape2D" parent="."]
+[node name="DamageCollision" type="CollisionShape2D" parent="BodyCollision"]
 visible = false
 position = Vector2( 0.333333, -6 )
 shape = SubResource( 9 )
 disabled = true
+
+[node name="IdleTimer" type="Timer" parent="."]
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2( -0.0682618, -7.25229 )
+shape = SubResource( 7 )
+disabled = true
+
+[connection signal="body_entered" from="HeadSprite/Fire/Fire1/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="HeadSprite/Fire/Fire2/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="HeadSprite/Fire/Fire3/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="HeadSprite/Fire/Fire4/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="HeadSprite/Fire/Fire5/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="BodyCollision" to="." method="_on_BodyCollision_body_entered"]

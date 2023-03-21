@@ -1,0 +1,8 @@
+[
+    {"Name": "Me", "Emotion": "AngryFire", "Text": "What the heck was that?! I almost died!", "Sound": "Normal"},
+    {"Name": "Rat", "Emotion": "Neutral", "Text": "Ay thanks.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "AnnoyedHandsMouth", "Text": "I could've at least gotten more than an apple.", "Sound": "Normal"},
+    {"Name": "Rat", "Emotion": "Neutral", "Text": "That's life, little bro.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Rat", "Emotion": "Neutral", "Text": "Maybe you would've gotten something different in a non-demo world.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "AngryFire", "Text": "Why couldn't it be now?", "Sound": "Normal"}
+]
