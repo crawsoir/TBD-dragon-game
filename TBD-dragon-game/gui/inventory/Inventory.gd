@@ -10,6 +10,7 @@ var max_inv_size
 var slot_list = [] # Store node references here
 const SLOT = preload("res://gui/inventory/Slot.tscn")
 var left_selected_index = null
+var holding = false
 
 func _ready():
 	# Player value should be set already here
@@ -29,7 +30,7 @@ func _ready():
 	for occupied_index in cur_items:
 		var item_data = cur_items[occupied_index] # Should be in the form of {"Name": name, "count": 1}
 		var item_name = item_data["Name"]
-		slot_list[int(occupied_index)].item = item_data
+		slot_list[int(occupied_index)].set_item(item_data)
 		slot_list[int(occupied_index)].change_texture(ItemBehaviour.get_item_texture(item_name))
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,6 +63,7 @@ func throw_item(index:String):
 	if index in player.info["items"]:
 		player.info["items"].erase(index)
 		slot_list[int(index)].change_texture(null)
+		slot_list[int(index)].set_item(null)
 
 func use_item(index:String):
 	# Get Item type
@@ -74,7 +76,7 @@ func use_item(index:String):
 		print("used!")
 		if item_data["count"] <= 0: #shouldn't ever be below zero
 			throw_item(index)
-		
+	slot_list[int(index)].set_text()
 	
 func repaint():
 	var cur_items = player.info["items"]
@@ -83,9 +85,10 @@ func repaint():
 		if string_index in cur_items:
 			var item_data = cur_items[string_index] # Should be in the form of {"Name": name, "count": 1}
 			var item_name = item_data["Name"]
-			slot_list[index].item = item_data
+			slot_list[index].set_item(item_data)
 			slot_list[index].change_texture(ItemBehaviour.get_item_texture(item_name))
 		else:
+			slot_list[index].set_item(null)
 			slot_list[index].change_texture(null)
 
 func _on_left_clicked(mouse_global_position, slot_bag_index : String):
@@ -96,17 +99,23 @@ func _on_left_clicked(mouse_global_position, slot_bag_index : String):
 			slot_list[int(left_selected_index)].highlight()
 			$ThrowButton.show()
 			$UseButton.show()
+			var item_name = player.info["items"][slot_bag_index]["Name"]
+			var item_info = ItemBehaviour.ITEM_DATA[item_name]["Description"]
+			$DetailsWindow.get_node("Description").text = item_info
+			$DetailsWindow.show()
 	elif left_selected_index == slot_bag_index:
 		slot_list[int(left_selected_index)].unhighlight()
 		left_selected_index = null
 		$ThrowButton.hide()
 		$UseButton.hide()
+		$DetailsWindow.hide()
 	else:
 		swap(left_selected_index, slot_bag_index)
 		slot_list[int(left_selected_index)].unhighlight()
 		left_selected_index = null
 		$ThrowButton.hide()
 		$UseButton.hide()
+		$DetailsWindow.hide()
 		
 	
 func _on_right_clicked(mouse_global_position, slot_bag_index : String):
@@ -114,6 +123,7 @@ func _on_right_clicked(mouse_global_position, slot_bag_index : String):
 	print("Right clicked signal emitted for inventory for " + slot_bag_index)
 
 func close_inventory():
+	self.player.is_inv_open = false
 	self.queue_free()
 
 
@@ -134,3 +144,17 @@ func _on_UseButton_pressed():
 		left_selected_index = null
 		$ThrowButton.hide()
 		$UseButton.hide()
+
+func _on_TextureRect_gui_input(event):
+	if event is InputEventMouseMotion && holding:
+		self.offset = self.offset + event.relative
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT && event.pressed:
+			holding = true
+		elif event.button_index == BUTTON_LEFT && !event.pressed:
+			holding = false
+
+
+
+func _on_CloseButton_pressed():
+	close_inventory()

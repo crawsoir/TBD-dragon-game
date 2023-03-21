@@ -29,8 +29,15 @@ var info = {
 	# {0: {"Name": "Peach", "count": 1}, 1: {"Name": "Cherry", "count": 1}}
 }
 
+var health_bar = preload("res://gui/health-bar/HealthBar.tscn")
+signal hp_changed
+
 func _ready(): # Prints when it enters the scene tree
-	
+	health_bar = health_bar.instance()
+	health_bar.max_health = info["max_hp"]
+	health_bar.current_health = info["hit_points"]
+	self.connect("hp_changed", health_bar, "on_health_update")
+	self.add_child(health_bar)
 	print(info) # Check if info is there
 	
 func _unhandled_input(_event):
@@ -83,6 +90,7 @@ func take_damage(damage:int):
 	print("Took damage!")
 	info["hit_points"] = clamp(info["hit_points"] - damage, 0, info["max_hp"])
 	print("Current Hp is ", info["hit_points"])
+	emit_signal("hp_changed", info["max_hp"], info["hit_points"])
 	if info["hit_points"] <= 0:
 		$AnimationPlayer.play("Death")
 		
@@ -95,6 +103,7 @@ func heal(points:int):
 	print("Healed!")
 	info["hit_points"] = clamp(info["hit_points"] + points, 0, info["max_hp"])
 	print("Hit points now at " + str(info["hit_points"]))
+	emit_signal("hp_changed", info["max_hp"], info["hit_points"])
 
 func _on_Area2D_body_entered(body):
 	if not body.get("allergy_damage") == null:

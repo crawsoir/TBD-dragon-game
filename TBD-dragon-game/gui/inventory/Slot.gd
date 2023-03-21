@@ -22,6 +22,16 @@ func _ready():
 	$ItemPanel.rect_size.x = self.rect_size.x
 	$ItemPanel.rect_size.y = self.rect_size.y
 
+func set_text():
+	if item:
+		$Amount.text = str(item["count"])
+	else:
+		$Amount.text = ""
+
+func set_item(inv_item):
+	item = inv_item
+	set_text()
+
 func change_texture(texture):
 	style.texture = texture
 
