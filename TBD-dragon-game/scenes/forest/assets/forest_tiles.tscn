@@ -70,7 +70,6 @@ scale = Vector2( 2, 2 )
 shape = SubResource( 1 )
 
 [node name="ground3" type="Sprite" parent="."]
-visible = false
 texture = SubResource( 4 )
 hframes = 6
 vframes = 6

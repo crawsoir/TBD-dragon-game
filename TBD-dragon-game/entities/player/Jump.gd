@@ -6,6 +6,7 @@ onready var animation_player:AnimationPlayer = get_node(_animation_player)
 onready var coyote_timer:Timer = $CoyoteTimer
 
 var coyote_duration = .2
+var max_fall_speed = 600
 
 func enter(msg := {}) -> void:
 	if msg.has("do_jump"):
@@ -20,7 +21,14 @@ func physics_update(delta: float) -> void:
 	else:
 		animation_player.play("Jump")
 	
-	player.velocity.y += player.gravity * delta
+	# gravity
+	if player.velocity.y <= max_fall_speed:
+		player.velocity.y += player.gravity * delta
+	
+	# short and long jumps
+	if Input.is_action_just_released("jump") and player.velocity.y < 0:
+		player.velocity.y -= player.velocity.y / 2
+	
 	if player.get_input_direction() > 0:
 		player.velocity.x = player.speed
 	elif player.get_input_direction() < 0:

@@ -1,8 +1,8 @@
 [
     {"Name": "Snake", "Emotion": "Happy", "Text": "Ssssssalutations, friend!", "Sound": "Normal", "Position": "Right"},
-    {"Name": "Me", "Emotion": "LookBackAnnoyed", "Text": "Let me guess, you want to eat me?", "Sound": "Normal"},
-    {"Name": "Snake", "Emotion": "Neutral", "Text": "Heavens no! who do you take me for?", "Sound": "Normal", "Position": "Right"},
-    {"Name": "Me", "Emotion": "LookBackAnnoyed", "Text": "... A snake? ", "Sound": "Normal"},
-    {"Name": "Snake", "Emotion": "Pleased", "Text": "I have standards. I don't just go eating whatever person I see. I'd ask you to respect that, please.", "Sound": "Normal", "Position": "Right"},
-    {"Name": "Me", "Emotion": "Annoyed1", "Text": "Aight.", "Sound": "Normal"}
+    {"Name": "Me", "Emotion": "Neutral", "Text": "What are you doing in this dirty pit?", "Sound": "Normal"},
+    {"Name": "Snake", "Emotion": "Pleased", "Text": "I kept hearing strange noises in here. I came in to investigate, but then I got scared.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "LookBackAnnoyed", "Text": "Noises, huh.", "Sound": "Normal"},
+    {"Name": "Snake", "Emotion": "Neutral", "Text": "Yeah! They were keeping me awake all night. I wish someone could take care of it!", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Annoyed1", "Text": "Good luck with that.", "Sound": "Normal"}
 ]

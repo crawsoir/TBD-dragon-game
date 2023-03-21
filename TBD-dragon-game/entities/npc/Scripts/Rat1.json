@@ -1,0 +1,9 @@
+[
+    {"Name": "Rat", "Emotion": "Neutral", "Text": "'Sup.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Neutral", "Text": "Sup.", "Sound": "Normal"},
+    {"Name": "Rat", "Emotion": "Neutral", "Text": "My bros gone a bit crazy. Can you help me deal with him?", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Rat", "Emotion": "Neutral", "Text": "Promise there's something in it for you.", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "Annoyed2", "Text": "Ok.", "Sound": "Normal"},
+    {"Name": "Rat", "Emotion": "Neutral", "Text": "Thanks. To find him, I will leave you with a riddle. \n\t\"Atop the tree, leftmost of three. \n\tThere you'll find, an underground key.\"", "Sound": "Normal", "Position": "Right"},
+    {"Name": "Me", "Emotion": "AnnoyedHandsMouth", "Text": "This is not helpful.", "Sound": "Normal"}
+]
