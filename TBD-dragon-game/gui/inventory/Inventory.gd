@@ -59,11 +59,18 @@ func move_to_empty_slot(index1, index2):
 	player.info["items"].erase(index1)
 	
 func throw_item(index:String):
-	# TODO: Should do an unthrowable check here
-	if index in player.info["items"]:
+	var item_name = player.info["items"][index]["Name"]
+	# Using lazy checking here.
+	var cant_throw = item_name in ItemBehaviour.ITEM_DATA and \
+		"Throwable" in ItemBehaviour.ITEM_DATA[item_name] and \
+		ItemBehaviour.ITEM_DATA[item_name]["Throwable"] == false
+	if index in player.info["items"] and not cant_throw:
 		player.info["items"].erase(index)
 		slot_list[int(index)].change_texture(null)
 		slot_list[int(index)].set_item(null)
+	else:
+		$DetailsWindow.get_node("Description").text = "You can't throw that!"
+		$DetailsWindow.show()
 
 func use_item(index:String):
 	# Get Item type
@@ -126,7 +133,6 @@ func close_inventory():
 	self.player.is_inv_open = false
 	self.queue_free()
 
-
 func _on_ThrowButton_pressed():
 	if left_selected_index != null:
 		throw_item(left_selected_index)
@@ -134,8 +140,6 @@ func _on_ThrowButton_pressed():
 		left_selected_index = null
 		$ThrowButton.hide()
 		$UseButton.hide()
-		
-
 
 func _on_UseButton_pressed():
 	if left_selected_index != null:
