@@ -9,7 +9,7 @@ var gravity = 1200
 
 #var dash_unlocked = true
 var dash_speed = 1000
-var dash_duration = .2
+var dash_duration = .3
 #var can_dash = dash_unlocked
 
 #var max_hp = 5
@@ -42,6 +42,9 @@ func _ready(): # Prints when it enters the scene tree
 	self.add_child(health_bar)
 	print(info) # Check if info is there
 	
+	$HitEffectTimer.one_shot = true
+	$HitEffectTimer.wait_time = 0.2
+	
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("bag"):
 		if is_inv_open:
@@ -65,6 +68,10 @@ var velocity := Vector2.ZERO
 
 signal death_triggered
 
+func _physics_process(delta):
+	if $HitEffectTimer.is_stopped():
+		modulate = Color(1,1,1)	
+
 func get_input_direction() -> float:
 	var direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	
@@ -87,7 +94,9 @@ func get_state():
 # HP related
 func take_damage(damage:int):
 	# this should be its own state, it can freeze the player like this
-	#$AnimationPlayer.play("Hit")
+	$AnimationPlayer.play("Hit")
+	modulate = Color(255, 255, 255)
+	$HitEffectTimer.start()
 	
 	audio_player.play_sound("player_hit")
 	print("Took damage!")
@@ -100,7 +109,7 @@ func take_damage(damage:int):
 		print("Died!")
 		info["alive"] = false
 		# emit_signal("death_triggered") TODO keep as below or fix later
-		Global.goto_scene(Global.GAME_OVER_SCREEN)
+		
 		
 func heal(points:int):
 	print("Healed!")
@@ -192,3 +201,12 @@ func move_item(initial_index, target_index):
 		
 func get_items_list():
 	return info["items"] # A reference to the list of items
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	match anim_name:
+		"Hit":
+			$AnimationPlayer.play("Idle")
+		"Death":
+			Global.goto_scene(Global.GAME_OVER_SCREEN)
+			
