@@ -34,6 +34,8 @@ margin_left = 1.0
 margin_top = 1.0
 margin_right = 31.0
 margin_bottom = 10.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 2 )
 
 [connection signal="gui_input" from="." to="." method="_on_Slot_gui_input"]
