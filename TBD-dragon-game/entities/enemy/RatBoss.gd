@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-var max_health = 10
-var current_health = 10
+var max_health = 50
+var current_health = 50
 signal rat_boss_defeated
 var positions = {
 	"TOP": {"x": 669, "y":1550},
@@ -28,7 +28,7 @@ func _ready():
 	idle_timer.one_shot = true
 	idle_timer.start()
 
-func _process(delta):
+func _physics_process(delta):
 	if current_health <= (max_health/2):
 		if stage == PHASE_ONE:
 			stage = PHASE_TWO
@@ -43,7 +43,7 @@ func _process(delta):
 		PHASE_ONE:
 			var velocity = Vector2(target_position["x"] - position.x, target_position["y"] - position.y).normalized()
 			if position.distance_to(Vector2(target_position["x"], target_position["y"])) > 3:
-				position += velocity*2
+				move_and_slide(velocity*175)
 			
 			if idle_timer.is_stopped() and (state_machine.get_current_node() == "Idle"):
 				var rand_number = randi()%2+1
@@ -60,7 +60,7 @@ func _process(delta):
 		PHASE_TWO:
 			var velocity = Vector2(target_position["x"] - position.x, target_position["y"] - position.y).normalized()
 			if position.distance_to(Vector2(target_position["x"], target_position["y"])) > 3:
-				position += velocity*3
+				move_and_slide(velocity*225)
 			
 			if idle_timer.is_stopped() and (state_machine.get_current_node() == "PhaseTwoIdle"):
 				var rand_number = randi()%2+1
@@ -76,7 +76,7 @@ func _process(delta):
 		DEFEATED:
 			if state_machine.get_current_node() == "Defeated_Anim_Finished":
 				emit_signal("rat_boss_defeated")
-				player.add_items("Apple", 1)
+				player.add_items("APPLE", 1)
 				player.remove_items("gate_key", 1)
 
 # set the player variable before calling this
@@ -94,11 +94,11 @@ func get_random_position():
 
 func _on_BodyCollision_body_entered(body):
 	if body.name == "Player":
-		#body.take_damage(1)
+		body.take_damage(1)
 		pass
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
-		#body.take_damage(1)
+		body.take_damage(1)
 		pass
 			

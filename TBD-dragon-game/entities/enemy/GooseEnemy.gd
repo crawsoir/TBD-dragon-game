@@ -9,7 +9,7 @@ enum {
 
 var state = IDLE
 var gravity = 10
-var speed = 0.01
+var speed = 2
 var health = 4
 var velocity = Vector2(0, 0)
 var accel = Vector2(0, 0)
@@ -43,6 +43,7 @@ func _physics_process(delta):
 	
 	match state:
 		IDLE:
+			set_collision_layer_bit(4, true)
 			if not is_on_floor():
 				velocity.y += gravity * delta
 			if $IdleTimer.is_stopped():
@@ -57,14 +58,17 @@ func _physics_process(delta):
 			pass
 		TRANSFORM:
 			$AnimationPlayer.current_animation = "Transform"
+			set_collision_layer_bit(4, false)
 		ATTACK:
 			$AnimationPlayer.current_animation = "Attack"
 			accel = (target.position - position).normalized()
-			if target.position.distance_to(position) > 200:
-				velocity = accel*speed*50
+			
+			var distance_to_target = target.position.distance_to(position)
+			if distance_to_target > 250:
+				velocity = accel*speed*(distance_to_target/3)
 			else:
 				velocity += accel*speed*0.5
-			position += velocity
+			move_and_slide(velocity)
 			
 			if target_in_collision and $DmgTimer.is_stopped():
 				target.take_damage(1)

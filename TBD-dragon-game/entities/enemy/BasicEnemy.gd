@@ -9,7 +9,7 @@ enum {
 
 var gravity = 10
 var velocity = Vector2(0, 0)
-var speed = 50
+var speed = 75
 
 var is_moving_left = false
 var health = 3
