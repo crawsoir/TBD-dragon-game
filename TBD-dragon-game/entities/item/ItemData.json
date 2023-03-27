@@ -1,6 +1,6 @@
 {
     "APPLE": {"Stackable": true, "Type": "HEAL", "Value": 2, "Description" : "A delicious fresh apple, yum!", "ImageName": "Apple.png"},
-    "QUESTITEM1": {"Stackable": false, "Type": "QUEST", "Value": null, "Description": "You need this for a quest.", "ImageName": "QuestItem1.png"},
+    "QUESTITEM1": {"Stackable": false, "Type": "QUEST", "Value": null, "Description": "You need this for a quest.", "ImageName": "QuestItem1.png", "Throwable": false},
     "DEFAULT": {"Stackable": true, "Type": "DEFAULT", "Value": null, "Description": "This is a testing item.", "ImageName": "DefaultItem.png"},
-    "gate_key": {"Stackable": false, "Type": "QUEST", "Value": null, "Description": "A steel key.", "ImageName": "key.png"}
+    "gate_key": {"Stackable": false, "Type": "QUEST", "Value": null, "Description": "A steel key.", "ImageName": "key.png", "Throwable": false}
 }
