@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://gui/inventory/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://gui/inventory/assets/CloseButton.png" type="Texture" id=2]
 [ext_resource path="res://gui/inventory/assets/inventory.png" type="Texture" id=3]
 [ext_resource path="res://gui/inventory/assets/DetailsRect.png" type="Texture" id=4]
 [ext_resource path="res://fonts/DTNouveau-Regular.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://gui/inventory/assets/buttoninvblank.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=2]
 size = 10
@@ -43,7 +44,7 @@ margin_right = 400.667
 margin_bottom = 291.333
 columns = 6
 
-[node name="ThrowButton" type="Button" parent="."]
+[node name="ThrowButtonOld" type="Button" parent="."]
 visible = false
 margin_left = 400.0
 margin_top = 318.0
@@ -53,7 +54,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="ThrowButton"]
+[node name="Label" type="Label" parent="ThrowButtonOld"]
 margin_top = 13.0
 margin_right = 40.0
 margin_bottom = 27.0
@@ -61,7 +62,7 @@ text = "Throw
 "
 align = 1
 
-[node name="UseButton" type="Button" parent="."]
+[node name="UseButtonOld" type="Button" parent="."]
 visible = false
 margin_left = 232.0
 margin_top = 318.0
@@ -71,13 +72,59 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="UseButton"]
+[node name="Label" type="Label" parent="UseButtonOld"]
 margin_top = 13.0
 margin_right = 40.0
 margin_bottom = 27.0
 text = "Use
 
 "
+align = 1
+
+[node name="UseButton" type="TextureButton" parent="."]
+visible = false
+margin_left = 418.0
+margin_top = 230.0
+margin_right = 468.0
+margin_bottom = 280.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
+expand = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="UseButton"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 5.0
+margin_top = 18.0
+margin_right = 45.0
+margin_bottom = 32.0
+text = "Use"
+align = 1
+
+[node name="ThrowButton" type="TextureButton" parent="."]
+visible = false
+margin_left = 418.0
+margin_top = 160.0
+margin_right = 468.0
+margin_bottom = 210.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
+expand = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ThrowButton"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 5.0
+margin_top = 17.0
+margin_right = 45.0
+margin_bottom = 31.0
+text = "Trash"
 align = 1
 
 [node name="CloseButton" type="TextureButton" parent="."]
@@ -117,6 +164,8 @@ custom_fonts/normal_font = SubResource( 6 )
 text = "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
 
 [connection signal="gui_input" from="TextureRect" to="." method="_on_TextureRect_gui_input"]
-[connection signal="pressed" from="ThrowButton" to="." method="_on_ThrowButton_pressed"]
+[connection signal="pressed" from="ThrowButtonOld" to="." method="_on_ThrowButton_pressed"]
+[connection signal="pressed" from="UseButtonOld" to="." method="_on_UseButton_pressed"]
 [connection signal="pressed" from="UseButton" to="." method="_on_UseButton_pressed"]
+[connection signal="pressed" from="ThrowButton" to="." method="_on_ThrowButton_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_CloseButton_pressed"]
