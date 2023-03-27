@@ -1,6 +1,8 @@
 class_name Player
 extends KinematicBody2D
 
+onready var audio_player = $AudioPlayerOverride
+
 var speed = 400
 var jump_impulse = 800
 var gravity = 1200
@@ -87,6 +89,7 @@ func take_damage(damage:int):
 	# this should be its own state, it can freeze the player like this
 	#$AnimationPlayer.play("Hit")
 	
+	audio_player.play_sound("player_hit")
 	print("Took damage!")
 	info["hit_points"] = clamp(info["hit_points"] - damage, 0, info["max_hp"])
 	print("Current Hp is ", info["hit_points"])

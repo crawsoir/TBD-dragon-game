@@ -3,6 +3,7 @@ extends PlayerState
 export (NodePath) var _animation_player
 onready var animation_player:AnimationPlayer = get_node(_animation_player)
 onready var dash_timer:Timer = $DashTimer
+onready var audio_player = $"../../AudioPlayer"
 
 func enter(_msg := {}) -> void:
 	animation_player.play("Dash")
@@ -13,6 +14,7 @@ func enter(_msg := {}) -> void:
 	dash_timer.wait_time = player.dash_duration
 	dash_timer.one_shot = true
 	dash_timer.start()
+	audio_player.play_sound("dash")
 	
 
 func physics_update(delta: float) -> void:

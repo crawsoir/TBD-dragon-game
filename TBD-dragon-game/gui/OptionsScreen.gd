@@ -6,3 +6,7 @@ func _ready():
 	
 func _on_Return_pressed():
 	self.queue_free()
+
+
+func _on_button_mouse_entered():
+	$AudioStreamPlayer.play()

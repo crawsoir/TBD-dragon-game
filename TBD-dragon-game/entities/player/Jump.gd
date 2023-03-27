@@ -4,6 +4,7 @@ extends PlayerState
 export (NodePath) var _animation_player
 onready var animation_player:AnimationPlayer = get_node(_animation_player)
 onready var coyote_timer:Timer = $CoyoteTimer
+onready var audio_player = $"../../AudioPlayerOverride"
 
 var coyote_duration = .2
 var max_fall_speed = 600
@@ -48,6 +49,7 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Claw_Atk")
 		
 	if player.is_on_floor():
+		audio_player.play_sound("land")
 		if player.info["dash_unlocked"]:
 			player.info["can_dash"] = true
 		if not coyote_timer.is_stopped():

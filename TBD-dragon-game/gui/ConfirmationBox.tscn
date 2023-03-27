@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://fonts/DTNouveau-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui/ConfirmationBox.gd" type="Script" id=2]
+[ext_resource path="res://gui/assets/button-click.mp3" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -68,5 +69,12 @@ custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 4 )
 text = "No"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -15.0
+pitch_scale = 2.0
+
+[connection signal="mouse_entered" from="ColorRect/HBoxContainer/Yes" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ColorRect/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
+[connection signal="mouse_entered" from="ColorRect/HBoxContainer/No" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ColorRect/HBoxContainer/No" to="." method="_on_No_pressed"]

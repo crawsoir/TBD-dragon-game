@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://fonts/DTNouveau-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui/OptionsScreen.gd" type="Script" id=2]
+[ext_resource path="res://gui/assets/button-click.mp3" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
@@ -87,4 +88,10 @@ custom_styles/pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 5 )
 text = "RETURN"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -15.0
+pitch_scale = 2.0
+
+[connection signal="mouse_entered" from="Return" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]

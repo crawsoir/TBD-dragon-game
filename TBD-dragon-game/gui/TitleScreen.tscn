@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://gui/placeholdertitlescreen.jpg" type="Texture" id=1]
 [ext_resource path="res://fonts/DTNouveau-Regular.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://gui/TitleScreen.gd" type="Script" id=3]
+[ext_resource path="res://gui/assets/button-click.mp3" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -144,7 +145,15 @@ custom_styles/normal = SubResource( 9 )
 text = "    Quit"
 align = 0
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -15.0
+
+[connection signal="mouse_entered" from="StartMenuButtons/Start" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="StartMenuButtons/Start" to="." method="_on_Start_pressed"]
+[connection signal="mouse_entered" from="StartMenuButtons/Continue" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="StartMenuButtons/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="mouse_entered" from="StartMenuButtons/Options" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="StartMenuButtons/Options" to="." method="_on_Options_pressed"]
+[connection signal="mouse_entered" from="StartMenuButtons/Quit" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="StartMenuButtons/Quit" to="." method="_on_Quit_pressed"]

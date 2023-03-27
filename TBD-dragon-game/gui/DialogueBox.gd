@@ -77,14 +77,14 @@ func nextPhrase() -> void:
 		$Portrait.texture = null
 		print("not found " + img)
 	
-	#TODO: localize sound effects in json, like with images
+	#TODO: bug: cannot load audio at runtime
 	# loading dialogue sound effect
-	var sound = audioPath + dialogue[phraseNum]["Sound"] + ".wav"
-	if f.file_exists(audioPath):
-		$AudioStreamPlayer.stream = load(audioPath)
-	else:
-		$AudioStreamPlayer.stream = null
-		print("not found " + sound)
+	#var sound = "res://gui/assets/Normal.wav"
+	#if f.file_exists(audioPath):
+	#	$AudioStreamPlayer.stream = load(audioPath)
+	#else:
+	#	$AudioStreamPlayer.stream = null
+	#	print("not found " + sound)
 		
 	while $Text.visible_characters < len($Text.text):
 		$Text.visible_characters += 1

@@ -12,3 +12,7 @@ func _on_Yes_pressed():
 func _on_No_pressed():
 	get_tree().paused = false
 	queue_free()
+
+
+func _on_button_mouse_entered():
+	$AudioStreamPlayer.play()

@@ -9,3 +9,6 @@ func _on_Try_Again_pressed():
 
 func _on_Save_and_Exit_pressed():
 	Global.goto_scene(Global.TITLE_SCREEN)
+
+func _on_button_mouse_entered():
+	$AudioStreamPlayer.play()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://fonts/DTNouveau-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui/PauseScreen.gd" type="Script" id=2]
+[ext_resource path="res://gui/assets/button-click.mp3" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -73,6 +74,14 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 6 )
 text = "Save and Exit"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -15.0
+pitch_scale = 2.0
+
+[connection signal="mouse_entered" from="HBoxContainer/Resume" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="HBoxContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/Options" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="HBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/Save and Exit" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="HBoxContainer/Save and Exit" to="." method="_on_Save_and_Exit_pressed"]

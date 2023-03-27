@@ -17,3 +17,7 @@ func _on_Save_and_Exit_pressed():
 	Global.save_game()
 	self.queue_free() # cleanup so it doesn't persist as a garbage scene
 	Global.goto_scene(Global.TITLE_SCREEN)
+
+
+func _on_button_mouse_entered():
+	$AudioStreamPlayer.play()
