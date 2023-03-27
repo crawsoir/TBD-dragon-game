@@ -15,14 +15,18 @@ var velocity = Vector2(0, 0)
 var accel = Vector2(0, 0)
 
 var target = null
+var target_in_collision = false
 
 func _ready():
 	$IdleTimer.wait_time = 2
 	$IdleTimer.start()
+	
+	$DmgTimer.wait_time = 1
+	
 	$AnimationPlayer.current_animation = "IdleLeft"
 
 
-func _process(delta):
+func _physics_process(delta):
 		
 	if $RayCast2D.is_colliding():
 		var obj = $RayCast2D.get_collider()
@@ -61,6 +65,10 @@ func _process(delta):
 			else:
 				velocity += accel*speed*0.5
 			position += velocity
+			
+			if target_in_collision and $DmgTimer.is_stopped():
+				target.take_damage(1)
+				$DmgTimer.start()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -78,13 +86,18 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
+		target_in_collision = true
 		body.take_damage(1)
+		$DmgTimer.start()
+
+func _on_Area2D_body_exited(body):
+	if body.name == "Player":
+		target_in_collision = false
+		$DmgTimer.stop()
+		
 		
 func take_damage(dmg):
 	health -= dmg
 	modulate = Color(1,0,0)	
 	$DmgTimer.wait_time = 0.2
 	$DmgTimer.start()
-
-	
-	
