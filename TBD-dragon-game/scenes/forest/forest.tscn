@@ -308,7 +308,7 @@ dialogue = "CrowDialogue2.json"
 wandering = false
 
 [node name="Npc8" parent="NPCs" instance=ExtResource( 7 )]
-position = Vector2( 5501, -902 )
+position = Vector2( 5505, -902 )
 scale = Vector2( 10, 10 )
 script = ExtResource( 11 )
 wandering = false
@@ -324,6 +324,14 @@ shape = SubResource( 1 )
 [node name="JumpDownArea2D" parent="." instance=ExtResource( 12 )]
 position = Vector2( 2745, -331 )
 scale = Vector2( 134, 1 )
+
+[node name="JumpDownArea2D2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 5534, -778 )
+scale = Vector2( 137, 1 )
+
+[node name="JumpDownArea2D3" parent="." instance=ExtResource( 12 )]
+position = Vector2( 12034, -2184 )
+scale = Vector2( 121, 1 )
 
 [connection signal="body_entered" from="SceneChangeMarkers/SceneChangePosMarker1/DetectionArea2D1" to="." method="_on_DetectionArea2D1_body_entered"]
 [connection signal="body_entered" from="BossInitiator" to="." method="_on_BossInitiator_body_entered"]
