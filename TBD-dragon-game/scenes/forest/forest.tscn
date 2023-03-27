@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/forest/assets/forest_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/DetectionArea2D.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://entities/item/BossGate.tscn" type="PackedScene" id=9]
 [ext_resource path="res://entities/item/GateKey.tscn" type="PackedScene" id=10]
 [ext_resource path="res://entities/npc/rat_npc.gd" type="Script" id=11]
+[ext_resource path="res://scenes/forest/assets/forest.mp3" type="AudioStream" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 224.5, 77.5 )
@@ -319,6 +320,10 @@ position = Vector2( 684, 1749 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossInitiator"]
 position = Vector2( -10.5, 91.5 )
 shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -15.0
 
 [connection signal="body_entered" from="SceneChangeMarkers/SceneChangePosMarker1/DetectionArea2D1" to="." method="_on_DetectionArea2D1_body_entered"]
 [connection signal="body_entered" from="BossInitiator" to="." method="_on_BossInitiator_body_entered"]

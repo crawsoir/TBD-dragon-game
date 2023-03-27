@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/cave/assets/cave_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/cave/assets/cave_bg_tileset.tres" type="TileSet" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/cave/starter_cave.gd" type="Script" id=6]
 [ext_resource path="res://entities/item/Item.tscn" type="PackedScene" id=7]
 [ext_resource path="res://entities/enemy/BasicEnemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/cave/assets/nice_loop.mp3" type="AudioStream" id=9]
 [ext_resource path="res://entities/npc/npc.tscn" type="PackedScene" id=11]
 
 [node name="StartingCave" type="Node2D"]
@@ -165,5 +166,9 @@ tile_data = PoolIntArray( 655356, 61, 0, 655357, 61, 0, 655358, 61, 0, 655359, 6
 position = Vector2( 2958, 2143 )
 sprite_path = "res://entities/item/assets/Apple.png"
 item_name = "APPLE"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -15.0
 
 [connection signal="body_entered" from="SceneChangeMarkers/SceneChangePosMarker1/DetectionArea2D1" to="." method="_on_DetectionArea2D1_body_entered"]

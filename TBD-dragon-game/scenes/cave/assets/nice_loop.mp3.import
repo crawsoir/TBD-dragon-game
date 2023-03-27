@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/nice_loop.mp3-50149abd05b2468dbf72ea660e3c350c.mp3str"
+
+[deps]
+
+source_file="res://scenes/cave/assets/nice_loop.mp3"
+dest_files=[ "res://.import/nice_loop.mp3-50149abd05b2468dbf72ea660e3c350c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
