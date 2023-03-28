@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://entities/player/assets/player_sprites.png" type="Texture" id=1]
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://entities/player/Claw_Atk.gd" type="Script" id=8]
 [ext_resource path="res://entities/player/assets/claw_atk.png" type="Texture" id=9]
 [ext_resource path="res://entities/player/PlayerAudioPlayer.tscn" type="PackedScene" id=10]
+[ext_resource path="res://entities/player/Death.gd" type="Script" id=11]
 
 [sub_resource type="CapsuleShape2D" id=14]
 radius = 19.4286
@@ -455,6 +456,10 @@ _animation_player = NodePath("../../AnimationPlayer")
 
 [node name="Claw_Atk_Timer" type="Timer" parent="StateMachine/Claw_Atk"]
 
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource( 11 )
+_animation_player = NodePath("../../AnimationPlayer")
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -466,4 +471,5 @@ shape = SubResource( 13 )
 [connection signal="body_entered" from="Sprites/Area2D_Attack" to="StateMachine/Claw_Atk" method="_on_Area2D_Attack_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Claw_Atk" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Death" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -71,6 +71,7 @@ signal death_triggered
 func _physics_process(delta):
 	if $HitEffectTimer.is_stopped():
 		modulate = Color(1,1,1)	
+		
 
 func get_input_direction() -> float:
 	var direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -104,7 +105,7 @@ func take_damage(damage:int):
 	print("Current Hp is ", info["hit_points"])
 	emit_signal("hp_changed", info["max_hp"], info["hit_points"])
 	if info["hit_points"] <= 0:
-		$AnimationPlayer.play("Death")
+		$StateMachine.transition_to("Death")
 		
 		print("Died!")
 		info["alive"] = false
@@ -207,6 +208,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	match anim_name:
 		"Hit":
 			$AnimationPlayer.play("Idle")
-		"Death":
-			Global.goto_scene(Global.GAME_OVER_SCREEN)
 			
