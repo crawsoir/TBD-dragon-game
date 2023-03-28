@@ -42,8 +42,6 @@ func _ready(): # Prints when it enters the scene tree
 	self.add_child(health_bar)
 	print(info) # Check if info is there
 	
-	$HitEffectTimer.one_shot = true
-	$HitEffectTimer.wait_time = 0.2
 	
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("bag"):
@@ -68,10 +66,6 @@ var velocity := Vector2.ZERO
 
 signal death_triggered
 
-func _physics_process(delta):
-	if $HitEffectTimer.is_stopped():
-		modulate = Color(1,1,1)	
-		
 
 func get_input_direction() -> float:
 	var direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -94,12 +88,7 @@ func get_state():
 
 # HP related
 func take_damage(damage:int):
-	# this should be its own state, it can freeze the player like this
-	$AnimationPlayer.play("Hit")
-	modulate = Color(255, 255, 255)
-	$HitEffectTimer.start()
-	
-	audio_player.play_sound("player_hit")
+	$StateMachine.transition_to("Hit")
 	print("Took damage!")
 	info["hit_points"] = clamp(info["hit_points"] - damage, 0, info["max_hp"])
 	print("Current Hp is ", info["hit_points"])
@@ -202,10 +191,4 @@ func move_item(initial_index, target_index):
 		
 func get_items_list():
 	return info["items"] # A reference to the list of items
-
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	match anim_name:
-		"Hit":
-			$AnimationPlayer.play("Idle")
 			
