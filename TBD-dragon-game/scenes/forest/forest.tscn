@@ -322,8 +322,22 @@ position = Vector2( -10.5, 91.5 )
 shape = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 12 )
 volume_db = -15.0
+
+[node name="DemoText" type="Node2D" parent="."]
+position = Vector2( 560, 1700 )
+
+[node name="Label" type="Label" parent="DemoText"]
+visible = false
+margin_right = 251.0
+margin_bottom = 48.0
+text = "Congrats! You've beaten the Rat Boss! This is the end of the demo, but feel free to continue exploring the game."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="body_entered" from="SceneChangeMarkers/SceneChangePosMarker1/DetectionArea2D1" to="." method="_on_DetectionArea2D1_body_entered"]
 [connection signal="body_entered" from="BossInitiator" to="." method="_on_BossInitiator_body_entered"]

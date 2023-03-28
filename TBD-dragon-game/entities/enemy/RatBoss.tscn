@@ -2283,7 +2283,7 @@ height = 4.66667
 
 [node name="Boss" type="KinematicBody2D" groups=["Enemy"]]
 scale = Vector2( 3, 3 )
-collision_layer = 16
+collision_layer = 0
 collision_mask = 32
 script = ExtResource( 2 )
 __meta__ = {

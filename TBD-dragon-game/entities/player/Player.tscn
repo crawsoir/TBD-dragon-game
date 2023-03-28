@@ -102,7 +102,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "Death"
-length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprites/Sprite:frame")
 tracks/0/interp = 1
@@ -110,7 +109,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 42, 43, 44, 45, 46 ]
@@ -171,7 +170,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=11]
 resource_name = "Hit"
-length = 0.5
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprites/Sprite:frame")
 tracks/0/interp = 1
@@ -382,7 +381,6 @@ collision_mask = 65
 script = ExtResource( 2 )
 
 [node name="AudioPlayerOverride" parent="." instance=ExtResource( 10 )]
-scale = Vector2( 1, 1 )
 
 [node name="AudioPlayer" parent="." instance=ExtResource( 10 )]
 
@@ -463,6 +461,9 @@ _animation_player = NodePath("../../AnimationPlayer")
 position = Vector2( -0.7, 3.429 )
 shape = SubResource( 13 )
 
+[node name="HitEffectTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Sprites/Area2D_Attack" to="StateMachine/Claw_Atk" method="_on_Area2D_Attack_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Claw_Atk" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

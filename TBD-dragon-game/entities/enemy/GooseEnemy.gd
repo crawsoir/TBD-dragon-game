@@ -9,20 +9,24 @@ enum {
 
 var state = IDLE
 var gravity = 10
-var speed = 0.01
+var speed = 2
 var health = 4
 var velocity = Vector2(0, 0)
 var accel = Vector2(0, 0)
 
 var target = null
+var target_in_collision = false
 
 func _ready():
 	$IdleTimer.wait_time = 2
 	$IdleTimer.start()
+	
+	$DmgTimer.wait_time = 1
+	
 	$AnimationPlayer.current_animation = "IdleLeft"
 
 
-func _process(delta):
+func _physics_process(delta):
 		
 	if $RayCast2D.is_colliding():
 		var obj = $RayCast2D.get_collider()
@@ -39,6 +43,7 @@ func _process(delta):
 	
 	match state:
 		IDLE:
+			set_collision_layer_bit(4, true)
 			if not is_on_floor():
 				velocity.y += gravity * delta
 			if $IdleTimer.is_stopped():
@@ -53,14 +58,21 @@ func _process(delta):
 			pass
 		TRANSFORM:
 			$AnimationPlayer.current_animation = "Transform"
+			set_collision_layer_bit(4, false)
 		ATTACK:
 			$AnimationPlayer.current_animation = "Attack"
 			accel = (target.position - position).normalized()
-			if target.position.distance_to(position) > 200:
-				velocity = accel*speed*50
+			
+			var distance_to_target = target.position.distance_to(position)
+			if distance_to_target > 250:
+				velocity = accel*speed*(distance_to_target/3)
 			else:
 				velocity += accel*speed*0.5
-			position += velocity
+			move_and_slide(velocity)
+			
+			if target_in_collision and $DmgTimer.is_stopped():
+				target.take_damage(1)
+				$DmgTimer.start()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -78,13 +90,18 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
+		target_in_collision = true
 		body.take_damage(1)
+		$DmgTimer.start()
+
+func _on_Area2D_body_exited(body):
+	if body.name == "Player":
+		target_in_collision = false
+		$DmgTimer.stop()
+		
 		
 func take_damage(dmg):
 	health -= dmg
 	modulate = Color(1,0,0)	
 	$DmgTimer.wait_time = 0.2
 	$DmgTimer.start()
-
-	
-	
