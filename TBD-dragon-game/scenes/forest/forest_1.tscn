@@ -32,4 +32,3 @@ position = Vector2( 300, 350 )
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="BossGate" parent="Node2D" instance=ExtResource( 4 )]
-scale = Vector2( 1, 1 )

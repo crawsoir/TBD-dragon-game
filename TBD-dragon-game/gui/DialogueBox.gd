@@ -62,7 +62,7 @@ func nextPhrase() -> void:
 	#TODO: this could be broken up into smaller functions
 	# loading portrait image
 	var img = imgPath + dialogue[phraseNum]["Name"] + dialogue[phraseNum]["Emotion"] + ".png"
-	if f.file_exists(img):
+	if f.file_exists(img) or f.file_exists(img + ".import"):
 		$Portrait.texture = load(img)
 		
 		match img_position:
