@@ -26,6 +26,7 @@ bg_color = Color( 0.254902, 0.254902, 0.254902, 0.588235 )
 [sub_resource type="StyleBoxEmpty" id=5]
 
 [node name="Options" type="CanvasLayer"]
+layer = 3
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
