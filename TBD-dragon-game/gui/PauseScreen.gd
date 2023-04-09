@@ -15,6 +15,7 @@ func _on_Save_and_Exit_pressed():
 	# Undo pausing or else everything will not work
 	get_tree().paused = false
 	Global.save_game()
+	Global.refresh_variables()
 	self.queue_free() # cleanup so it doesn't persist as a garbage scene
 	Global.goto_scene(Global.TITLE_SCREEN)
 

@@ -8,6 +8,7 @@ func _on_Try_Again_pressed():
 	Global.continue_game()
 
 func _on_Save_and_Exit_pressed():
+	Global.refresh_variables()
 	Global.goto_scene(Global.TITLE_SCREEN)
 
 func _on_button_mouse_entered():

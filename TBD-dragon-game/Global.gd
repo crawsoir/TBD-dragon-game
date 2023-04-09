@@ -44,6 +44,22 @@ var spawnable = {"QUESTITEM1": true, "gate_key": true} # Maybe add respawn timer
 # It's hacky but we'll track player items here briefly when transitioning
 # in order to generate certain items properly
 
+# Need to refresh certain Global variables upon a new game
+func refresh_variables():
+	quest_progress = {
+		"test_quest": {
+			"Status": NEW_QUEST, # NEW, IPR, DONE,
+			"Items": {"QUESTITEM1": 1},
+			"Rewards": {"APPLE": 3}
+		},
+		"gate_quest": {
+			"Status": NEW_QUEST, # NEW, IPR, DONE,
+			"Items": {"gate_key": 1},
+			"Rewards": {"APPLE": 1}
+		}
+	}
+	spawnable = {"QUESTITEM1": true, "gate_key": true}
+
 # Functions for managing scenes
 func _ready():
 	var root = get_tree().get_root()
